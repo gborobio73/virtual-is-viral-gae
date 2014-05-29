@@ -1,4 +1,4 @@
-appengine-skeleton
-=============================
+virtual-is-viral
+================
 
-This is a generated application from the appengine-skeleton archetype.
+Tales from the Crypt.
