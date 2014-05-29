@@ -42,12 +42,11 @@ angular.module('vivServices').factory('services', function($http, $http) {
                         });
         }
     services.getUser = function(){
-             return JSON.parse(sessionStorage.getItem('user'));
+             return $http.get('/rest/user/')
+                       .then(function(result) {
+                            return result.data;
+                        });
         }
-
-    services.removeUser = function (){
-        sessionStorage.removeItem('user');
-    }
 
     return services; 
 });
