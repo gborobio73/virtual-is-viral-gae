@@ -11,6 +11,11 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
+import com.google.appengine.api.users.User;
+
+
 @Path("works")
 public class WorksApi {
 
@@ -18,6 +23,11 @@ public class WorksApi {
     @Path("/all")
     @Produces({ MediaType.APPLICATION_JSON })
     public Response getAllWorks() {
+        UserService userService = UserServiceFactory.getUserService();
+        if (!userService.isUserLoggedIn()) {
+            return Response.status(Response.Status.UNAUTHORIZED).build();
+        } 
+
         Gson gson = new Gson();
         List<Work> works = new WorkRepository().getAllWorks();
         //return gson.toJson(works);
@@ -25,20 +35,27 @@ public class WorksApi {
     }
 
     @GET
-    @Path("/user/{user}")
+    @Path("/user")
     @Produces({ MediaType.APPLICATION_JSON })
-    public String getUserWorks(@PathParam("user") String user) {
+    public Response getUserWorks() {
+        UserService userService = UserServiceFactory.getUserService();
+        if (!userService.isUserLoggedIn()) {
+            return Response.status(Response.Status.UNAUTHORIZED).build();
+        } 
+
+        User currentUser = userService.getCurrentUser();
+
         Gson gson = new Gson();
-        List<Work> works = new WorkRepository().getUserWorks(user);
-        return gson.toJson(works);
+        List<Work> works = new WorkRepository().getUserWorks(currentUser.getNickname());
+        return Response.ok().entity(gson.toJson(works)).build();
     }
 
     @GET
     @Path("/work/{id}")
     @Produces({ MediaType.APPLICATION_JSON })
-    public String getWork(@PathParam("id") String id) {
+    public Response getWork(@PathParam("id") String id) {
         Gson gson = new Gson();
         Work work = new WorkRepository().getWork(id);
-        return gson.toJson(work);
+        return Response.ok().entity(gson.toJson(work)).build();
     }
 }

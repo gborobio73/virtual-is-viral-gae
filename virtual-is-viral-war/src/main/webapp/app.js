@@ -36,34 +36,21 @@ vivApp.config(function($stateProvider, $urlRouterProvider) {
     })
 });
 
-/*vivApp.factory('httpRequestInterceptor', function ($location) {
+vivApp.factory('httpRequestInterceptor', function ($location, $q) {
   
   return {
-    
-    request: function (config) {
-
-      var doAfterCheckingIt = function(userSessionState){
-        console.log ('userSessionState: ' + userSessionState);
-        if (userSessionState != true) {
-          window.location.replace("/Login.html");
+        responseError: function(rejection) {
+          if (rejection.status === 401) {
+                console.log("Response Error 401",rejection);
+                //$location.path('/login'); // for angular view/partial
+                window.location = "./login";
+            }
+            return $q.reject(rejection);
         }
       };
-
-      var sessionState = sessionStorage.vivSessionState;
-      sessionParams = {
-        "client_id": '17792696780-egbqbeqkdbamg2aojs0e7otgvq1i2p06.apps.googleusercontent.com',
-        "session_state": sessionState 
-      };
-      
-      gapi.auth.checkSessionState(sessionParams, doAfterCheckingIt);
-
-      return config || $q.when(config);
-    }
-
-  };
 
 });
  
 vivApp.config(function ($httpProvider) {
   $httpProvider.interceptors.push('httpRequestInterceptor');
-});*/
+});

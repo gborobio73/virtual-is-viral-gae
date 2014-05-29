@@ -10,9 +10,9 @@ angular.module('vivServices').factory('services', function($http, $http) {
                         });
         }
 
-    services.getUserWorks = function(user) {
+    services.getUserWorks = function() {
              //return the promise directly.
-             return $http.get('/rest/works/user/'+user)
+             return $http.get('/rest/works/user/')
                        .then(function(result) {
                             //resolve the promise as the data
                             return result.data;
@@ -26,16 +26,16 @@ angular.module('vivServices').factory('services', function($http, $http) {
                             return result.data;
                         });
         }
-    services.getUnreadNotificationsAmount = function(user){
-             return $http.get('/rest/notifications/unreadamount/'+user)
+    services.getUnreadNotificationsAmount = function(){
+             return $http.get('/rest/notifications/unreadamount/')
                        .then(function(result) {
                             //resolve the promise as the data
                             return result.data;
                         });
         }
-    services.getNotifications = function(user){
+    services.getNotifications = function(){
         //return the promise directly.
-             return $http.get('/rest/notifications/'+user)
+             return $http.get('/rest/notifications/')
                        .then(function(result) {
                             //resolve the promise as the data
                             return result.data;
@@ -44,6 +44,7 @@ angular.module('vivServices').factory('services', function($http, $http) {
     services.getUser = function(){
              return $http.get('/rest/user/')
                        .then(function(result) {
+                            console.log('/rest/user/ -> ' + JSON.stringify(result.data));
                             return result.data;
                         });
         }

@@ -10,8 +10,8 @@ angular.module('vivControllers').controller(
           }); 
     };
 
-    $scope.getUserWorks = function(user) {
-        services.getUserWorks(user).then(
+    $scope.getUserWorks = function() {
+        services.getUserWorks().then(
         function(result) {
           $scope.works = result;
           }); 
