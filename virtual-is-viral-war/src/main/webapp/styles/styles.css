@@ -1,0 +1,119 @@
+/*
+body {
+  max-width: 1024px;
+}*/
+
+nav {
+  float: right;
+  margin: 1.51515151%;   /*  10px ÷ 660px = .01515151 */
+}
+
+section {
+  float: left;
+  margin: 1.51515151%;   /*  10px ÷ 660px = .01515151 */
+  width: 63.63636363%;   /* 420px ÷ 660px = .63636363 */   
+}
+aside {
+  float: right;
+  margin: 1.51515151%;   /*  10px ÷ 660px = .01515151 */
+  width: 30.30303030%;   /* 200px ÷ 660px = .30303030 */
+}
+
+div {
+		font: 15px Arial, sans-serif;
+		color: #333;
+		margin: 0;
+}
+input {
+		font: 15px Arial, sans-serif;
+		color: #333;
+		margin: 0;
+}
+
+footer {
+	clear:both;
+	margin: 1.51515151%;  
+}
+
+.works-panel {
+	/*width: 50%;
+	max-width: 1024px;
+	min-width: 800px;*/
+	margin: 25px auto;
+}
+
+.columns {
+	-webkit-column-count: 5;
+	-webkit-column-gap: 10px;
+	-webkit-column-fill: auto;
+	-moz-column-count: 5;
+	-moz-column-gap: 10px;
+	-moz-column-fill: auto;
+	column-count: 5;
+	column-gap: 15px;
+	column-fill: auto;
+}
+
+.work {
+	display: inline-block;
+	background: #FEFEFE;
+	border: 2px solid #FAFAFA;
+	box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+	margin: 0 2px 15px;
+	-webkit-column-break-inside: avoid;
+	-moz-column-break-inside: avoid;
+	column-break-inside: avoid;
+	padding: 15px;
+	padding-bottom: 5px;
+	background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
+	opacity: 1;
+	
+	-webkit-transition: all .2s ease;
+	-moz-transition: all .2s ease;
+	-o-transition: all .2s ease;
+	transition: all .2s ease;
+}
+
+.work img {
+	width: 100%;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 15px;
+	margin-bottom: 5px;
+}
+
+.work p {
+	font: 12px/18px Arial, sans-serif;
+	color: #333;
+	margin: 0;
+}
+
+.columns:hover .work:not(:hover) {
+	opacity: 0.4;
+}
+
+@media (min-device-width : 320px) and (max-device-width : 568px) {  
+	.columns {
+		-webkit-column-count: 2;
+		-moz-column-count: 2;
+		column-count: 2;
+	}
+	.work p {
+		font: 30px Arial, sans-serif;
+		color: #333;
+		margin: 0;
+	}
+	div {
+		font: 30px Arial, sans-serif;
+	}
+	input {
+		font: 30px Arial, sans-serif;
+	}
+}
+
+/* iphone */
+@media all and (min-device-width : 320px) and (max-device-width : 568px) {  
+	nav {
+	  float: right;
+	  margin: 1.51515151%;   /*  10px ÷ 660px = .01515151 */
+	}
+}

@@ -1,0 +1,19 @@
+<html>
+<head></head>
+<body>
+	<section>
+		<div nav-menu></div>
+		<div class="wrap" >
+	    <div class="box" ng-repeat="work in works | filter:w" >
+	      <div class="pin" >
+	        <a href="/#/Details/{{work.Id}}">
+	          <img src="./img/{{work.ImageId}}.jpg"/>
+	        </a>
+	        <div class = "description">[{{$index + 1}}] {{work.Id}}-{{work.Name}}: {{work.Description}}</div>
+	        <div class = "user">{{work.User}}</div>
+	      </div>
+	    </div>
+  	</div>
+	</section>
+</body>
+</html>
