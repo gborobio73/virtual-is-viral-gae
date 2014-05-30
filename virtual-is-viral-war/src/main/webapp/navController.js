@@ -26,7 +26,16 @@ angular.module('vivControllers').controller(
         });
     }
 
+    var getLogoutUrl = function(){
+      services.getLogoutUrl().then(
+        function(result) {
+          console.log('getLogoutUrl -> ' + JSON.stringify(result));
+          $scope.logoutUrl = result.LogoutURL;
+        });
+    }
+
     getUser();
+    getLogoutUrl();
     getUnreadNotificationsAmount();
     getNotifications();
 

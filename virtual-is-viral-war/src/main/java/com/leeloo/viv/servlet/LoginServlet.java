@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
     if (userService.isUserLoggedIn()) {
         resp.sendRedirect("/#/Board");
     } else {
-        resp.sendRedirect(userService.createLoginURL("/#/Board"));
+        resp.sendRedirect("/login.html");
     }
   }
 
