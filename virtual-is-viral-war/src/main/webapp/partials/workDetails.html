@@ -1,22 +1,18 @@
-<html> 
-  <head></head>
-    <div nav-menu></div>
-    <div class="wrap" >
-      <div class="box-details" >
-        <div class="pin" >
-          <img src='./img/{{work.ImageId}}.jpg' class = "image-details"/>
-          <div class = "description">{{work.Name}}: {{work.Description}} by {{work.User}}</div>
-          <!--div class = "user">{{work.User}}</div-->
-          <div class = "description">
-            <p>Comments:</p>
-            <div ng-repeat="comment in work.Comments" >
-              <p>{{comment.User}} commented: {{comment.Comment}} on ##Date goes here##
-                <a href="" ng-show="canDelete(comment, work)">Delete</a>
-              </p>
-            </div>
-          </div>
+<div nav-menu></div>
+<div class="wrap" >
+  <div class="box-details" >
+    <div class="pin" >
+      <img src='./img/{{work.imageId}}.jpg' class = "image-details"/>
+      <div class = "description">{{work.name}}: {{work.description}} by {{work.user}}</div>
+      <!--div class = "user">{{work.User}}</div-->
+      <div class = "description">
+        <p>Comments:</p>
+        <div ng-repeat="comment in work.comments" >
+          <p>{{comment.user}} commented: {{comment.comment}} on ##Date goes here##
+            <a href="" ng-show="canDelete(comment, work)">Delete</a>
+          </p>
         </div>
       </div>
     </div>
-  </body>
-</html>
+  </div>
+</div>

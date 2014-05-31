@@ -23,7 +23,7 @@ public class NotificationsRepository{
     	List<Notification> userNotifications = new ArrayList<Notification>();
     	for(Notification notification : notifications)
 		{
-		    if (notification.User.toLowerCase().equals(user.toLowerCase())) {
+		    if (notification.user.toLowerCase().equals(user.toLowerCase())) {
 		    	userNotifications.add(notification);
 		    }
 		}
@@ -37,7 +37,7 @@ public class NotificationsRepository{
 
         for(Notification notification : userNotifications)
         {
-            if (!notification.Read) {
+            if (!notification.read) {
                 unread.add(notification);
             }
         }

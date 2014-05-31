@@ -19,15 +19,10 @@ vivApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'partials/Board.html',
       controller: 'boardController'
     })
-    .state('NewBoard', {
-      url: '/NewBoard',
-      templateUrl: 'partials/NewBoard.html',
-      controller: 'boardController'
-    })
-    .state('Tiles', {
-      url: '/Tiles',
-      templateUrl: 'Tiles.html',
-      controller: 'boardController'
+    .state('UploadWork', {
+      url: '/UploadWork',
+      templateUrl: 'partials/uploadWork.html',
+      controller: 'uploadWorkController'
     })
     .state('Details', {
       url: '/Details/:workId',

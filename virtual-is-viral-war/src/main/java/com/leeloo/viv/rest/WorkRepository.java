@@ -37,7 +37,7 @@ public class WorkRepository{
     	List<Work> userWorks = new ArrayList<Work>();
     	for(Work work : works)
 		{
-		    if (work.User.toLowerCase().equals(user.toLowerCase())) {
+		    if (work.user.toLowerCase().equals(user.toLowerCase())) {
 		    	userWorks.add(work);
 		    }
 		}
@@ -48,7 +48,7 @@ public class WorkRepository{
     {
         for(Work work : works)
         {
-            if (work.Id.toLowerCase().equals(id.toLowerCase())) {
+            if (work.id.toLowerCase().equals(id.toLowerCase())) {
                 return work;
             }
         }

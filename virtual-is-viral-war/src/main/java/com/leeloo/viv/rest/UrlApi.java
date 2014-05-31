@@ -35,13 +35,13 @@ public class UrlApi {
 
     private class Url
     {
-        String LoginURL;
-        String LogoutURL;
+        String loginURL;
+        String logoutURL;
 
         public Url(String loginURL, String logoutURL)
         {
-            LoginURL = loginURL;
-            LogoutURL = logoutURL;
+            this.loginURL = loginURL;
+            this.logoutURL = logoutURL;
         }
     }
 }

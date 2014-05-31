@@ -4,20 +4,20 @@ import java.util.*;
 
 public class Work{
   
-  public String Id;
-	public String User;
-  public String Name;
-  public String Description;
-  public String ImageId;
-  public List<Comment> Comments;
+  public String id;
+  public String user;
+  public String name;
+  public String description;
+  public String imageId;
+  public List<Comment> comments;
 
   public Work(String id, String user, String name, String description, String imageId, List<Comment> comments)
   {
-    Id = id;
-  	User = user;
-  	Name = name;
-  	Description = description;
-    ImageId = imageId;
-    Comments = comments;
+	  this.id = id;
+	  this.user = user;
+	  this.name = name;
+	  this.description = description;
+	  this.imageId = imageId;
+	  this.comments = comments;
   }
 }

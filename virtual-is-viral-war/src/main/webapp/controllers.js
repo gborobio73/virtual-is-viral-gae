@@ -36,9 +36,7 @@ angular.module('vivControllers').controller(
     
     $scope.canDelete = function(comment, work){
       console.log("canDelete comment ->" + JSON.stringify(comment));
-      console.log("canDelete work ->" + JSON.stringify(work));
-      var can_delete = (comment.User == work.User);
-      console.log("can delete ->" + can_delete);
+      var can_delete = (comment.user == work.user);
       return can_delete;
     };
   });
