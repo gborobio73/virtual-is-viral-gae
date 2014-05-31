@@ -31,21 +31,14 @@ angular.module('vivControllers').controller(
           }); 
     };
 
-    var getUser = function(){
-      services.getUser().then(
-        function(result) {
-          $scope.user = result;
-        });
-    }
     var workId = $stateParams.workId;
     getWork(workId);
-    getUser();
-
-    $scope.canDelete = function(commentCreator){
-      console.log("canDelete commentCreator ->" + commentCreator);
-      console.log("canDelete $scope.user ->" + $scope.user.Name);
-      var can_delete = (commentCreator == $scope.user.Name);
-      console.log("commentCreator == $scope.user ->" + can_delete);
+    
+    $scope.canDelete = function(comment, work){
+      console.log("canDelete comment ->" + JSON.stringify(comment));
+      console.log("canDelete work ->" + JSON.stringify(work));
+      var can_delete = (comment.User == work.User);
+      console.log("can delete ->" + can_delete);
       return can_delete;
     };
   });

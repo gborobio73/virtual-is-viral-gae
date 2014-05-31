@@ -11,7 +11,7 @@
             <p>Comments:</p>
             <div ng-repeat="comment in work.Comments" >
               <p>{{comment.User}} commented: {{comment.Comment}} on ##Date goes here##
-                <a href="" ng-show="canDelete(comment.User)">Delete</a>
+                <a href="" ng-show="canDelete(comment, work)">Delete</a>
               </p>
             </div>
           </div>
