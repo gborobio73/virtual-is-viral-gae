@@ -19,7 +19,6 @@ import com.google.appengine.api.users.User;
 @Path("url")
 public class UrlApi {
     @GET
-    @Path("/")
     @Produces({ MediaType.APPLICATION_JSON })
     public Response getUrl() {
         

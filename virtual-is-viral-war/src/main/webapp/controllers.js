@@ -27,7 +27,7 @@ angular.module('vivControllers').controller(
     var getWork = function(workId) {
       services.getWork(workId).then(
         function(result) {
-          $scope.workDetails = result;
+          $scope.work = result;
           console.log ('getWork() returns: ' + JSON.stringify(result));
           }); 
     };

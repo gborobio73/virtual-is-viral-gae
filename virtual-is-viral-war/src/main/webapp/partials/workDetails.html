@@ -1,12 +1,14 @@
 <html> 
   <head></head>
-  <body>
     <div nav-menu></div>
-    <section>
-      <div class="work-details">
-          Work is {{workDetails}}
-          <img src='./img/{{workDetails.ImageId}}.jpg'/>
+    <div class="wrap" >
+      <div class="box-details" >
+        <div class="pin" >
+          <img src='./img/{{work.ImageId}}.jpg' class = "image-details"/>
+          <div class = "description">{{work.Id}}-{{work.Name}}: {{work.Description}}</div>
+          <div class = "user">{{work.User}}</div>
+        </div>
       </div>
-    </section>
+    </div>
   </body>
 </html>

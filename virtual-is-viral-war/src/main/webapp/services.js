@@ -35,7 +35,7 @@ angular.module('vivServices').factory('services', function($http, $http) {
         }
     services.getNotifications = function(){
         //return the promise directly.
-             return $http.get('/rest/notifications/')
+             return $http.get('/rest/notifications/all')
                        .then(function(result) {
                             //resolve the promise as the data
                             return result.data;

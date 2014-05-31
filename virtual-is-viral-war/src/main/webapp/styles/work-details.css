@@ -1,0 +1,12 @@
+.box-details {
+    float: center;
+    position: relative;
+    width:100%;
+ }
+ 
+ .image-details {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    /*padding: 5px 5px 5px 5px;*/ /*top,right bottom, left*/
+    margin-bottom: 5px;
+}

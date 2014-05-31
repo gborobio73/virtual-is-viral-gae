@@ -19,9 +19,9 @@ import com.google.appengine.api.users.User;
 public class NotificationsApi {
 
     @GET
-    @Path("/")
+    @Path("/all")
     @Produces({ MediaType.APPLICATION_JSON })
-    public Response getUserNotifications(@PathParam("user") String user) {
+    public Response getUserNotifications() {
         UserService userService = UserServiceFactory.getUserService();
         if (!userService.isUserLoggedIn()) {
             return Response.status(Response.Status.UNAUTHORIZED).build();
@@ -36,7 +36,7 @@ public class NotificationsApi {
     @GET
     @Path("/unreadamount/")
     @Produces({ MediaType.APPLICATION_JSON })
-    public Response getUnreadNotificationsAmount(@PathParam("user") String user) {
+    public Response getUnreadNotificationsAmount() {
         UserService userService = UserServiceFactory.getUserService();
         if (!userService.isUserLoggedIn()) {
             return Response.status(Response.Status.UNAUTHORIZED).build();
