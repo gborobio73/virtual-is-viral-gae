@@ -9,7 +9,8 @@ public class WorkRepository{
     				Arrays.asList(
     						new Comment("1", "leeloo.turku", "How beautiful! Good job!"),
     						new Comment("2", "erika.perttuli", "Bah, you need to work harder."),
-    						new Comment("1", "leeloo.turku", "Erika, that is a good job!")
+    						new Comment("1", "leeloo.turku", "Erika, that is a good job!"),
+                            new Comment("1", "gborobio", "C'mon guys! Give us a break :P")
     						)),
             new Work("2", "erika.perttuli","Anoter work", "Another work", "2", new ArrayList<Comment>()),
             new Work("3", "leeloo.turku","Painting", "A painting work", "3", new ArrayList<Comment>()),

@@ -5,7 +5,6 @@ angular.module('vivControllers').controller(
     $scope.getAllWorks = function() {
       services.getAllWorks().then(
         function(result) {
-          //console.log('called getSllWorksServices: '+JSON.stringify(result));
           $scope.works = result;
           }); 
     };
@@ -31,8 +30,23 @@ angular.module('vivControllers').controller(
           console.log ('getWork() returns: ' + JSON.stringify(result));
           }); 
     };
+
+    var getUser = function(){
+      services.getUser().then(
+        function(result) {
+          $scope.user = result;
+        });
+    }
     var workId = $stateParams.workId;
     getWork(workId);
+    getUser();
 
+    $scope.canDelete = function(commentCreator){
+      console.log("canDelete commentCreator ->" + commentCreator);
+      console.log("canDelete $scope.user ->" + $scope.user.Name);
+      var can_delete = (commentCreator == $scope.user.Name);
+      console.log("commentCreator == $scope.user ->" + can_delete);
+      return can_delete;
+    };
   });
 

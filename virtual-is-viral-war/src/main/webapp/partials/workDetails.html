@@ -7,8 +7,13 @@
           <img src='./img/{{work.ImageId}}.jpg' class = "image-details"/>
           <div class = "description">{{work.Name}}: {{work.Description}} by {{work.User}}</div>
           <!--div class = "user">{{work.User}}</div-->
-          <div ng-repeat="comment in work.Comments" >
-            <div class = "description">{{comment.User}} commented: {{comment.Comment}} on ##Date goes here##</div>
+          <div class = "description">
+            <p>Comments:</p>
+            <div ng-repeat="comment in work.Comments" >
+              <p>{{comment.User}} commented: {{comment.Comment}} on ##Date goes here##
+                <a href="" ng-show="canDelete(comment.User)">Delete</a>
+              </p>
+            </div>
           </div>
         </div>
       </div>

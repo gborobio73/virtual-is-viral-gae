@@ -19,10 +19,7 @@ angular.module('vivControllers').controller(
     var getUser = function(){
       services.getUser().then(
         function(result) {
-          console.log('user -> ' + JSON.stringify(result));
           $scope.user = result;
-          console.log('$scope.user -> ' + JSON.stringify($scope.user));
-      
         });
     }
 
