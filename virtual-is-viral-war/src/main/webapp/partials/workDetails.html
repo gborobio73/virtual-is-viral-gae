@@ -5,8 +5,11 @@
       <div class="box-details" >
         <div class="pin" >
           <img src='./img/{{work.ImageId}}.jpg' class = "image-details"/>
-          <div class = "description">{{work.Id}}-{{work.Name}}: {{work.Description}}</div>
-          <div class = "user">{{work.User}}</div>
+          <div class = "description">{{work.Name}}: {{work.Description}} by {{work.User}}</div>
+          <!--div class = "user">{{work.User}}</div-->
+          <div ng-repeat="comment in work.Comments" >
+            <div class = "description">{{comment.User}} commented: {{comment.Comment}} on ##Date goes here##</div>
+          </div>
         </div>
       </div>
     </div>
