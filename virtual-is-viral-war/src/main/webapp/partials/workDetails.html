@@ -2,7 +2,8 @@
 <div class="wrap" >
   <div class="box-details" >
     <div class="pin" >
-      <img src='./img/{{work.imageId}}.jpg' class = "image-details"/>
+      <!--img src='./img/{{work.imageId}}.jpg' class = "image-details"/-->
+      <img src='./serve?blob-key={{work.imageId}}' class = "image-details"/>
       <div class = "description">{{work.name}}: {{work.description}} by {{work.user}}</div>
       <!--div class = "user">{{work.User}}</div-->
       <div class = "description">

@@ -5,7 +5,7 @@ import java.util.*;
 public class WorkRepository{
 
 	private List<Work> works = Arrays.asList(
-    		new Work("1", "erika.perttuli","Building facade", "A picture of a building facade", "1", 
+    		new Work("1", "erika.perttuli","Building facade", "A picture of a building facade", "NrCRLTYhB3UKsRDIyVHM1g", 
     				Arrays.asList(
     						new Comment("1", "leeloo.turku", "How beautiful! Good job!"),
     						new Comment("2", "erika.perttuli", "Thanks Leeloo!."),

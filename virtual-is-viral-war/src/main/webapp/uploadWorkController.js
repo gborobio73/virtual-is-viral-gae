@@ -15,7 +15,7 @@ angular.module('vivControllers').controller(
     	console.log("twitter_userid: " + $scope.twitter_userid);
     	console.log("twitter_password: " + $scope.twitter_password);
     	console.log("filename: " + $scope.filename);
-    	console.log("myTweetPic: " + $scope.myTweetPic);
+    	console.log("myTweetPic: " + $scope.twitter_userid);
       /*var work ={};
       work.name = $scope.title;
       work.description = $scope.description;

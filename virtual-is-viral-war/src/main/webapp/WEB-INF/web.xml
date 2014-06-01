@@ -33,7 +33,15 @@
         <servlet-name>Upload</servlet-name>
         <url-pattern>/upload</url-pattern>
     </servlet-mapping>
-
+	<servlet>
+        <servlet-name>Serve</servlet-name>
+        <servlet-class>com.leeloo.viv.servlet.ServeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Serve</servlet-name>
+        <url-pattern>/serve</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <servlet-name>Jersey Web Application</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
