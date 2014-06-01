@@ -32,9 +32,19 @@ public class UploadApi {
         
         BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
         
-        uploadFileURL=blobstoreService.createUploadUrl("/testurl");
+        uploadFileURL=blobstoreService.createUploadUrl("/upload");
 
-        return Response.ok().entity(new Gson().toJson(uploadFileURL)).build();
+        return Response.ok().entity(new Gson().toJson(new Url(uploadFileURL))).build();
 
+    }
+
+    private class Url
+    {
+        String uploadFileURL;
+        
+        public Url(String uploadFileURL)
+        {
+            this.uploadFileURL = uploadFileURL;
+        }
     }
 }

@@ -26,6 +26,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>Upload</servlet-name>
+        <servlet-class>com.leeloo.viv.servlet.UploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Upload</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Jersey Web Application</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
         <init-param>

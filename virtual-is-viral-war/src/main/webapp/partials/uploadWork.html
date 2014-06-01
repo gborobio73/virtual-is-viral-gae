@@ -1,10 +1,32 @@
+
+<body>
 <div nav-menu></div>
 <div class="panel panel-default add-form">
   <div class="panel-heading">
     <h3 class="panel-title">Upload work</h3>
   </div>
+  <!--form action="" method="post" enctype="multipart/form-data"-->
+  <form ng-submit="uploadWork()"  enctype="multipart/form-data">
+      Twitter User Id : <input type="text" ng-model="twitter_userid" name="twitter_userid"><br>
+      Twitter Password : <input type="p" ng-model="twitter_password" name="twitter_password"><br>
+      File :
+      <input type="text" ng-model="filename"  name="filename">
+      <input type="file" ng-model="myTweetPic" name="myTweetPic">
+      <input type="submit" value="Upload Picture">
+  </form>
+
   <div class="panel-body">
-    <form role="form">
+    <!--form action="{{uploadURL}}" method="post" enctype="multipart/form-data">
+            <input type="text" name="foo">
+            <input type="file" name="myFile">
+            <input type="submit" value="Submit">
+    </form-->
+    <!--form action="http://localhost:8080/upload" method="post" enctype="multipart/form-data">
+            <input type="text" name="foo">
+            <input type="file" name="myFile">
+            <input type="submit" value="Submit">
+    </form-->
+    <!--form role="form">
       <div class="form-group">
         <label for="titleText">Title</label>
         <input type="text" class="form-control" id="titleText" placeholder="Enter work title" ng-model="title">
@@ -24,6 +46,7 @@
         </label>
       </div>
       <button type="submit" class="btn btn-default" ng-click="uploadWork()">Upload</button>
-    </form>
+    </form-->
   </div>
 </div>
+</body>    
