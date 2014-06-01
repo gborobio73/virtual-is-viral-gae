@@ -27,7 +27,7 @@ angular.module('vivControllers').controller(
       services.getLogoutUrl().then(
         function(result) {
           console.log('getLogoutUrl -> ' + JSON.stringify(result));
-          $scope.logoutUrl = result.LogoutURL;
+          $scope.logoutUrl = result.logoutURL;
         });
     }
 

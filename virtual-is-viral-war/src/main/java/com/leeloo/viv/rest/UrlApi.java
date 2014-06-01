@@ -15,21 +15,29 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.api.users.User;
 
+import com.google.appengine.api.blobstore.BlobKey;
+import com.google.appengine.api.blobstore.BlobstoreService;
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+
 
 @Path("url")
 public class UrlApi {
     @GET
     @Produces({ MediaType.APPLICATION_JSON })
     public Response getUrl() {
-        
+
         String loginURL="";
         String logoutURL="";
+        String uploadFileURL="";
         UserService userService = UserServiceFactory.getUserService();
         
         loginURL = userService.createLoginURL("/#/Board");
         logoutURL = userService.createLogoutURL("/logout.html");
+        //BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+        
+        //uploadFileURL=blobstoreService.createUploadUrl("/testurl");
 
-        return Response.ok().entity(new Gson().toJson(new Url(loginURL, logoutURL))).build();
+        return Response.ok().entity(new Gson().toJson(new Url(loginURL, logoutURL, uploadFileURL))).build();
 
     }
 
@@ -37,11 +45,13 @@ public class UrlApi {
     {
         String loginURL;
         String logoutURL;
+        String uploadFileURL;
 
-        public Url(String loginURL, String logoutURL)
+        public Url(String loginURL, String logoutURL, String uploadFileURL)
         {
             this.loginURL = loginURL;
             this.logoutURL = logoutURL;
+            this.uploadFileURL = uploadFileURL;
         }
     }
 }
