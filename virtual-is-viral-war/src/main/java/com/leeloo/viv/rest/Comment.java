@@ -1,8 +1,12 @@
 package com.leeloo.viv.rest;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
+@Entity
 public class Comment{
   
-  public String id;
+  @Id public String id;
   public String user;
   public String comment; 
  
