@@ -14,39 +14,50 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import com.googlecode.objectify.ObjectifyFactory;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.leeloo.viv.repository.IdGenerator;
+import com.leeloo.viv.repository.WorkFactory;
+import com.leeloo.viv.repository.WorkRepo;
 import com.leeloo.viv.rest.Comment;
+import com.leeloo.viv.rest.Work;
 
 public class UploadServlet extends HttpServlet {
+	
     private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
-
+    private WorkFactory workFactory = new WorkFactory(new IdGenerator());
+    private WorkRepo workRepository = new WorkRepo();
+    
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse res)
         throws ServletException, IOException {
 
-        Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);
-		
+    	UserService userService = UserServiceFactory.getUserService();
+        
+        if (!userService.isUserLoggedIn()) {
+            res.sendRedirect("/login.html");
+        }
+    	
+        Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);		
         List<BlobKey> blobKey = blobs.get("myTweetPic");
 
         if (blobKey == null) {
-            res.sendRedirect("/");
+            res.sendRedirect("/Error.html");
         } else {
         	String imageId = blobKey.get(0).getKeyString();
-        	NewWork work = new NewWork();
-        	work.id = UUID.randomUUID().toString();
-        	work.name= req.getParameter("title");
-        	work.description= req.getParameter("description");
-        	work.imageId= imageId;
-        	work.comments= new ArrayList<Comment>();
-        	ObjectifyService.register(NewWork.class);
-        	ObjectifyService.ofy().save().entity(work).now();
-        	//Car c = ofy().load().type(Car.class).id("123123").now();
-        	//ofy().delete().entity(c);
+        	String title = req.getParameter("title");
+        	String description = req.getParameter("description");
+        	User currentUser = userService.getCurrentUser();
         	
-            //res.sendRedirect("/serve?blob-key=" + blobKey.get(0).getKeyString());
+        	Work work = workFactory.createWork(currentUser.getNickname(), title, description, imageId);
+        	workRepository.save(work);
+        	
+        	res.sendRedirect("/#/Board");
         }
     }
     

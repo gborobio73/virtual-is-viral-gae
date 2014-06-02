@@ -7,13 +7,14 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.NewCookie;
+
 import java.util.List;
 
 import com.google.gson.Gson;
-
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.api.users.User;
+import com.leeloo.viv.repository.WorkRepo;
 
 
 @Path("works")
@@ -29,7 +30,8 @@ public class WorksApi {
         } 
 
         Gson gson = new Gson();
-        List<Work> works = new WorkRepository().getAllWorks();
+        //List<Work> works = new WorkRepository().getAllWorks();
+        List<Work> works = new WorkRepo().getAll();
         //return gson.toJson(works);
         return Response.ok().entity(gson.toJson(works)).build();
     }
@@ -55,7 +57,8 @@ public class WorksApi {
     @Produces({ MediaType.APPLICATION_JSON })
     public Response getWork(@PathParam("id") String id) {
         Gson gson = new Gson();
-        Work work = new WorkRepository().getWork(id);
+        //Work work = new WorkRepository().getWork(id);
+        Work work = new WorkRepo().get(id);
         return Response.ok().entity(gson.toJson(work)).build();
     }
 }

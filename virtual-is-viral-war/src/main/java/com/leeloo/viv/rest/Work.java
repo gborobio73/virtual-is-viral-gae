@@ -14,7 +14,10 @@ public class Work{
 	public String description;
 	public String imageId;
 	public List<Comment> comments;
-
+	public Date created;
+	
+	public Work(){}
+	
 	public Work(String id, String user, String name, String description, String imageId, List<Comment> comments)
 	{
 	  this.id = id;
@@ -23,6 +26,7 @@ public class Work{
 	  this.description = description;
 	  this.imageId = imageId;
 	  this.comments = comments;
+	  this.created = new Date();
 	}
 
 	public void addComment(String commentUser, String commentText) {

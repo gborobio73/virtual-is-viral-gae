@@ -1,7 +1,8 @@
 package com.leeloo.viv.rest;
 
-import static org.junit.Assert.*;
-import junit.framework.Assert;
+import static org.junit.Assert.assertEquals;
+
+import java.util.Date;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -9,14 +10,14 @@ import org.junit.Test;
 
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
-import com.googlecode.objectify.Key;
-import com.leeloo.viv.repository.CommentFactory;
+import com.leeloo.viv.repository.IdGenerator;
 import com.leeloo.viv.repository.WorkFactory;
 import com.leeloo.viv.repository.WorkRepo;
 
 public class WorkRepositoryTests {
 
 	static LocalServiceTestHelper helper =  new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());
+	WorkFactory workFactory = new WorkFactory(new IdGenerator());
 	
 	@BeforeClass 
 	public static void setUp() {
@@ -36,7 +37,7 @@ public class WorkRepositoryTests {
 		String description ="My masterpiece";
 		String imageId = "ashdkdh7878asdjk";
 		
-		Work work = new WorkFactory().createWork(user , name , description, imageId);
+		Work work = workFactory.createWork(user , name , description, imageId);
 		
 		repo.save(work);
 		
@@ -58,7 +59,7 @@ public class WorkRepositoryTests {
 		String description ="My masterpiece";
 		String imageId = "ashdkdh7878asdjk";
 		
-		Work work = new WorkFactory().createWork(user , name , description, imageId);
+		Work work = workFactory.createWork(user , name , description, imageId);
 		String commentUser = "user@g.de";
 		String commentText = "Hey, that's an awesome stuff";
 		
@@ -84,7 +85,7 @@ public class WorkRepositoryTests {
 		String description ="My masterpiece";
 		String imageId = "ashdkdh7878asdjk";
 		
-		Work work = new WorkFactory().createWork(user , name , description, imageId);
+		Work work = workFactory.createWork(user , name , description, imageId);
 		String workId = work.id;
 		
 		String commentUser = "user@g.de";
@@ -108,6 +109,27 @@ public class WorkRepositoryTests {
 		assertEquals(workWithDeletedComments.comments.size(), 2);
 		assertEquals(workWithDeletedComments.comments.get(1).user, "another@user.com");
 		assertEquals(workWithDeletedComments.comments.get(1).comment, "I'm next!");
+	}
+	
+	@Test
+	public void WorkRepo_save_savesWorkCreatedDate() throws InterruptedException {
+		WorkRepo repo = new WorkRepo();
+		
+		String name = "Title 1";
+		String user = "test@dom.com";		
+		String description ="My masterpiece";
+		String imageId = "ashdkdh7878asdjk";
+		
+		Work work = workFactory.createWork(user , name , description, imageId);
+		String workId = work.id;
+		
+		repo.save(work);
+		
+		int oneSecond = 1000;
+		Thread.sleep(oneSecond);
+		
+		Work savedWork = repo.get(workId);
+		assertEquals(savedWork.created, work.created);		
 	}
 	
 }
