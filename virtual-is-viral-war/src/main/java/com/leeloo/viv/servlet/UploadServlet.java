@@ -47,7 +47,7 @@ public class UploadServlet extends HttpServlet {
         List<BlobKey> blobKey = blobs.get("myTweetPic");
 
         if (blobKey == null) {
-            res.sendRedirect("/Error.html");
+            res.sendRedirect("/error.html");
         } else {
         	String imageId = blobKey.get(0).getKeyString();
         	String title = req.getParameter("title");
