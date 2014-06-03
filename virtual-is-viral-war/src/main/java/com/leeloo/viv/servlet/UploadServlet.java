@@ -57,7 +57,7 @@ public class UploadServlet extends HttpServlet {
         	Work work = workFactory.createWork(currentUser.getNickname(), title, description, imageId);
         	workRepository.save(work);
         	
-        	res.sendRedirect("/#/Board");
+        	res.sendRedirect("/login");
         }
     }
     

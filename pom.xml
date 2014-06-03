@@ -18,6 +18,10 @@
                   <groupId>com.google.appengine</groupId>
                   <artifactId>appengine-maven-plugin</artifactId>
                   <version>${appengine.target.version}</version>
+                  <!--configuration>
+                    <port>8080</port>
+                    <address>192.168.0.10</address>
+                  </configuration-->
               </plugin>
           </plugins>
       </pluginManagement>
