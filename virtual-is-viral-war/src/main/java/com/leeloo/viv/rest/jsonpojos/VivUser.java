@@ -1,4 +1,4 @@
-package com.leeloo.viv.rest;
+package com.leeloo.viv.rest.jsonpojos;
 
 public class VivUser{
   

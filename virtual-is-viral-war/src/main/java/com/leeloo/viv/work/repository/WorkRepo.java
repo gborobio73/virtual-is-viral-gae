@@ -1,12 +1,12 @@
-package com.leeloo.viv.repository;
+package com.leeloo.viv.work.repository;
 
 import static com.googlecode.objectify.ObjectifyService.register;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.util.List;
 
-import com.leeloo.viv.rest.Comment;
-import com.leeloo.viv.rest.Work;
+import com.leeloo.viv.work.Comment;
+import com.leeloo.viv.work.Work;
 
 public class WorkRepo {
 	

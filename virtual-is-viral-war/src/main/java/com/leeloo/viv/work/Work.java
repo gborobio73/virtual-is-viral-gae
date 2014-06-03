@@ -1,4 +1,4 @@
-package com.leeloo.viv.rest;
+package com.leeloo.viv.work;
 
 import java.util.*;
 
@@ -16,30 +16,48 @@ public class Work{
 	public List<Comment> comments;
 	public Date created;
 	
-	public Work(){}
+	public Work(){
+		if(comments == null)
+		{
+			comments = new ArrayList<Comment>();
+		}
+	}
 	
-	public Work(String id, String user, String name, String description, String imageId, List<Comment> comments)
+	public Work(String id, String user, String name, String description, String imageId)
 	{
 	  this.id = id;
 	  this.user = user;
 	  this.name = name;
 	  this.description = description;
 	  this.imageId = imageId;
-	  this.comments = comments;
+	  this.comments = new ArrayList<Comment>();
 	  this.created = new Date();
 	}
 
 	public void addComment(String commentUser, String commentText) {
-		String id = Integer.toString(comments.size() + 1);
+		String id = getNewId();
 		comments.add(new Comment(id, commentUser, commentText));		
 	}
 
-	public void deleteComment(String commentIdToDelete) {
+	private String getNewId() {
+		if(comments.size()==0) return "1";
+		else{
+			String lastId = comments.get(comments.size()-1).id;
+			return Integer.toString(Integer.parseInt(lastId) + 1);
+		}
+		
+	}
+
+	public void deleteComment(String commentIdToDelete, String whosDeleting) {
 		Iterator<Comment> it = comments.iterator();
 		while (it.hasNext()) {
 			Comment comment = it.next();
 			if (comment.id.equals(commentIdToDelete)) {
-				it.remove();
+				
+				if(comment.user.equals(whosDeleting)){
+					it.remove();
+				}
+				
 			}	
 		}		
 	}

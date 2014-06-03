@@ -31,13 +31,38 @@ angular.module('vivControllers').controller(
           }); 
     };
 
+    var getConnectedUser = function(){
+        services.getUser().then(
+          function(result) {
+            $scope.user = result;
+          });
+      }
+    
     var workId = $stateParams.workId;
     getWork(workId);
+    getConnectedUser();
     
-    $scope.canDelete = function(comment, work){
-      console.log("canDelete comment ->" + JSON.stringify(comment));
-      var can_delete = (comment.user == work.user);
+    $scope.canDelete = function(comment){      
+      var can_delete = (comment.user ==  $scope.user.name);
       return can_delete;
     };
+    
+    $scope.addComment = function(){
+    	console.log("addComment to work id->" + JSON.stringify($scope.commentText));
+    	services.addComment($scope.work.id, $scope.commentText).then(
+	        function(result) {
+	          console.log ('addComment() returns: ' + JSON.stringify(result));
+	          $scope.commentText = "";
+	          getWork($scope.work.id);
+	          }); 
+    };
+    
+    $scope.deleteComment= function(workId, commentId){
+        console.log("deleteComment ->" + workId + " " + commentId);        
+    	services.deleteComment(workId, commentId).then(
+	        function(result) {	          
+	          getWork($scope.work.id);
+	          }); 
+      };
   });
 

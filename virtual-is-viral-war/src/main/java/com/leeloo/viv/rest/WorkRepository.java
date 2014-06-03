@@ -2,9 +2,12 @@ package com.leeloo.viv.rest;
 
 import java.util.*;
 
+import com.leeloo.viv.work.NullWork;
+import com.leeloo.viv.work.Work;
+
 public class WorkRepository{
 
-	private List<Work> works = Arrays.asList(
+	/*private List<Work> works = Arrays.asList(
     		new Work("1", "erika.perttuli","Building facade", "A picture of a building facade", "NrCRLTYhB3UKsRDIyVHM1g", 
     				Arrays.asList(
     						new Comment("1", "leeloo.turku", "How beautiful! Good job!"),
@@ -24,9 +27,10 @@ public class WorkRepository{
             new Work("12", "gborobio", "A picture work", "A picture of Borobio", "12", new ArrayList<Comment>()),
             new Work("13", "leeloo.turku", "A picture work", "A picture of Leeloo", "13", new ArrayList<Comment>()),
             new Work("14", "gborobio", "A picture work", "A picture of Borobio", "14", new ArrayList<Comment>())
-    	);
+    	);*/
 
-
+	private List<Work> works = new ArrayList<Work>();
+	
     public List<Work>  getAllWorks()
     {
         return works;

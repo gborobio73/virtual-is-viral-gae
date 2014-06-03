@@ -1,8 +1,6 @@
-package com.leeloo.viv.rest;
+package test.com.leeloo.viv.work.repository;
 
 import static org.junit.Assert.assertEquals;
-
-import java.util.Date;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -10,9 +8,10 @@ import org.junit.Test;
 
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
-import com.leeloo.viv.repository.IdGenerator;
-import com.leeloo.viv.repository.WorkFactory;
-import com.leeloo.viv.repository.WorkRepo;
+import com.leeloo.viv.work.Work;
+import com.leeloo.viv.work.repository.IdGenerator;
+import com.leeloo.viv.work.repository.WorkFactory;
+import com.leeloo.viv.work.repository.WorkRepo;
 
 public class WorkRepositoryTests {
 
@@ -100,7 +99,7 @@ public class WorkRepositoryTests {
 		Work workWithComments = repo.get(workId);
 		
 		String commentIdToDelete = "2";
-		workWithComments.deleteComment(commentIdToDelete);
+		workWithComments.deleteComment(commentIdToDelete, commentUser);
 		
 		repo.save(workWithComments);
 		

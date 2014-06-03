@@ -1,19 +1,34 @@
 <div nav-menu></div>
+<img src='./serve?blob-key={{work.imageId}}' class = "image-details"/>
+<div class = "image-footer">     
+	<p>{{work.name}}: {{work.description}} by {{work.user}}. Added on {{work.created}}</p>
+   	<p>Comments:</p>
+   	<div ng-repeat="comment in work.comments" >
+ 	    <p>{{comment.user}} commented: {{comment.comment}} on {{comment.date}}
+			<!-- a href="" ng-show="canDelete(comment, work)">Delete</a -->
+			<a id="a-delete" href ng-click="deleteComment(work.id, comment.id)" ng-show="canDelete(comment)">Delete</a>
+     	</p>
+	</div>
+	<div>
+		<input type="text" ng-model = "commentText"/>
+		<button ng-click="addComment()">Add</button>
+	</div>
+</div>
+
+<!--div nav-menu></div>
 <div class="wrap" >
   <div class="box-details" >
     <div class="pin" >
-      <!--img src='./img/{{work.imageId}}.jpg' class = "image-details"/-->
       <img src='./serve?blob-key={{work.imageId}}' class = "image-details"/>
       <div class = "description">{{work.name}}: {{work.description}} by {{work.user}}</div>
-      <!--div class = "user">{{work.User}}</div-->
       <div class = "description">
         <p>Comments:</p>
         <div ng-repeat="comment in work.comments" >
-          <p>{{comment.user}} commented: {{comment.comment}} on ##Date goes here##
+          <p>{{comment.user}} commented: {{comment.comment}} on {{comment.date}}
             <a href="" ng-show="canDelete(comment, work)">Delete</a>
           </p>
         </div>
       </div>
     </div>
   </div>
-</div>
+</div-->

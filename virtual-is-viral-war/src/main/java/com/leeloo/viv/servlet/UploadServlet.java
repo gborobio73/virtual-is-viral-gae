@@ -1,10 +1,8 @@
 package com.leeloo.viv.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,15 +15,11 @@ import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
-import com.googlecode.objectify.ObjectifyFactory;
-import com.googlecode.objectify.ObjectifyService;
-import com.googlecode.objectify.annotation.Entity;
-import com.googlecode.objectify.annotation.Id;
-import com.leeloo.viv.repository.IdGenerator;
-import com.leeloo.viv.repository.WorkFactory;
-import com.leeloo.viv.repository.WorkRepo;
-import com.leeloo.viv.rest.Comment;
-import com.leeloo.viv.rest.Work;
+import com.leeloo.viv.work.Work;
+import com.leeloo.viv.work.repository.IdGenerator;
+import com.leeloo.viv.work.repository.WorkFactory;
+import com.leeloo.viv.work.repository.WorkRepo;
+import com.leeloo.viv.work.usecase.UseCases;
 
 public class UploadServlet extends HttpServlet {
 	
@@ -44,7 +38,7 @@ public class UploadServlet extends HttpServlet {
         }
     	
         Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);		
-        List<BlobKey> blobKey = blobs.get("myTweetPic");
+        List<BlobKey> blobKey = blobs.get("file");
 
         if (blobKey == null) {
             res.sendRedirect("/error.html");
@@ -54,20 +48,9 @@ public class UploadServlet extends HttpServlet {
         	String description = req.getParameter("description");
         	User currentUser = userService.getCurrentUser();
         	
-        	Work work = workFactory.createWork(currentUser.getNickname(), title, description, imageId);
-        	workRepository.save(work);
+        	new UseCases().createWork(currentUser.getNickname(), title, description, imageId);
         	
         	res.sendRedirect("/login");
         }
-    }
-    
-    @Entity
-    class NewWork {
-        @Id String id; // Can be Long, long, or String
-        String user;
-        String name;
-        String description;
-        String imageId;
-        List<Comment> comments;
-    }
+    }   
 }

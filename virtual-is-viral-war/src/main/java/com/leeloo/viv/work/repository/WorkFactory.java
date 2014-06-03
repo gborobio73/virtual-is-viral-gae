@@ -1,9 +1,9 @@
-package com.leeloo.viv.repository;
+package com.leeloo.viv.work.repository;
 
 import java.util.ArrayList;
 
-import com.leeloo.viv.rest.Comment;
-import com.leeloo.viv.rest.Work;
+import com.leeloo.viv.work.Comment;
+import com.leeloo.viv.work.Work;
 
 public class WorkFactory {
 	
@@ -19,6 +19,6 @@ public class WorkFactory {
 	{
 		String id = idGenerator.generateId();
 		
-		return new Work(id, user, name, description, imageId, new ArrayList<Comment>());
+		return new Work(id, user, name, description, imageId);
 	}
 }

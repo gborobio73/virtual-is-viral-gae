@@ -12,6 +12,9 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
+import com.leeloo.viv.work.Notification;
+import com.leeloo.viv.work.repository.NotificationRepo;
+import com.leeloo.viv.work.repository.NotificationsRepository;
 
 
 @Path("notifications")
@@ -28,7 +31,7 @@ public class NotificationsApi {
 
         User currentUser = userService.getCurrentUser();
         Gson gson = new Gson();
-        List<Notification> notifications = new NotificationsRepository().getUserNotifications(currentUser.getNickname());
+        List<Notification> notifications = new NotificationRepo().getUserNotifications(currentUser.getNickname());
         return Response.ok().entity(gson.toJson(notifications)).build();
     }
 
@@ -43,7 +46,7 @@ public class NotificationsApi {
 
         User currentUser = userService.getCurrentUser();
         Gson gson = new Gson();
-        List<Notification> notifications = new NotificationsRepository().getUserUnreadNotifications(currentUser.getNickname());
+        List<Notification> notifications = new NotificationRepo().getUserUnreadNotifications(currentUser.getNickname());
         return Response.ok().entity(gson.toJson(notifications.size())).build();
     }
     

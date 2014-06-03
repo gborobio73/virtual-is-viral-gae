@@ -7,17 +7,21 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.NewCookie;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Context;
+
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
+
 import java.io.IOException;
 
 import com.google.gson.Gson;
+import com.leeloo.viv.rest.jsonpojos.VivUser;
 
 @Path("user")
 public class UserApi {

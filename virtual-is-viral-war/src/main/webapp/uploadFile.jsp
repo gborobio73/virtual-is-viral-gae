@@ -10,7 +10,7 @@
 	Description: <input type="text" name="description"/><br/>
 	File :
 	<input type="text" name="filename"/>
-	<input type="file" name="myTweetPic"/>
+	<input type="file" name="file"/>
 	<input type="submit" value="Upload Picture"/>
 </form>
 

@@ -1,4 +1,4 @@
-package com.leeloo.viv.repository;
+package com.leeloo.viv.work.repository;
 
 import java.util.UUID;
 
