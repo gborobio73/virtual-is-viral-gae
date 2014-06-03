@@ -11,6 +11,6 @@ public class NotificationFactory {
 	
 	public Notification createNotification(String toWhom, String workId, String notification){	
 		String id = idGenerator.generateId();
-		return new Notification(id, toWhom, workId,  notification, false); 
+		return new Notification(id, toWhom, workId,  notification); 
 	}	
 }
