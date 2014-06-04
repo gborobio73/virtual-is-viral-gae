@@ -56,6 +56,16 @@
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
 
+	<!-- Google Drive -->
+	<servlet>
+		<servlet-name>ViewDriveFile</servlet-name>
+		<servlet-class>com.leeloo.viv.servlet.drive.ViewDriveFile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewDriveFile</servlet-name>
+		<url-pattern>/viewdrivefile</url-pattern>
+	</servlet-mapping>
+	
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
