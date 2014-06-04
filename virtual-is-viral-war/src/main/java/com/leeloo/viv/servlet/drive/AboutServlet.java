@@ -43,7 +43,7 @@ public class AboutServlet extends DrEditServlet {
     	About about = service.about().get().execute();
     	sendJson(resp, about);
     } catch (GoogleJsonResponseException e) {
-      if (e.getDetails().code == 401) {
+      if (e.getStatusCode() == 401) {
         // The user has revoked our token or it is otherwise bad.
         // Delete the local copy so that their next page load will recover.
         deleteCredential(req, resp);

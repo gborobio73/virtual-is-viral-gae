@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.services.oauth2.Oauth2;
-import com.google.api.services.oauth2.model.Userinfoplus;;
+import com.google.api.services.oauth2.model.Userinfo;;
 
 /**
  * Servlet that returns the profile of the currently logged-in user.
@@ -38,10 +38,10 @@ public class UserServlet extends DrEditServlet {
       throws IOException {
   	Oauth2 service = getOauth2Service(getCredential(req, resp));
     try {
-      Userinfoplus about = service.userinfo().get().execute();
+      Userinfo about = service.userinfo().get().execute();
       sendJson(resp, about);
     } catch (GoogleJsonResponseException e) {
-      if (e.getDetails().code == 401) {
+      if (e.getStatusCode() == 401) {
         // The user has revoked our token or it is otherwise bad.
         // Delete the local copy so that their next page load will recover.
         deleteCredential(req, resp);

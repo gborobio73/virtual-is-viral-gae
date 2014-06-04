@@ -55,7 +55,7 @@ public class FileServlet extends DrEditServlet {
     try {
       file = service.files().get(fileId).execute();
     } catch (GoogleJsonResponseException e) {
-      if (e.getDetails().code == 401) {
+      if (e.getStatusCode() == 401) {
         // The user has revoked our token or it is otherwise bad.
         // Delete the local copy so that their next page load will recover.
         deleteCredential(req, resp);
@@ -87,11 +87,9 @@ public class FileServlet extends DrEditServlet {
     File file = clientFile.toFile();
 
     if (!clientFile.content.equals("")) {
-    	ByteArrayContent baContent = new ByteArrayContent(clientFile.content);
-    	file = service.files().insert(file,baContent).execute();
-//      file = service.files().insert(file,
-//          ByteArrayContent.fromString(clientFile.mimeType, clientFile.content))
-//          .execute();
+    	file = service.files().insert(file,
+          ByteArrayContent.fromString(clientFile.mimeType, clientFile.content))
+          .execute();
     } else {
       file = service.files().insert(file).execute();
     }
@@ -111,11 +109,9 @@ public class FileServlet extends DrEditServlet {
     File file = clientFile.toFile();
     // If there is content we update the given file
     if (clientFile.content != null) {
-    	ByteArrayContent baContent = new ByteArrayContent(clientFile.content);
-    	file = service.files().insert(file,baContent).execute();
-//      file = service.files().update(clientFile.resource_id, file,
-//          ByteArrayContent.fromString(clientFile.mimeType, clientFile.content))
-//          .setNewRevision(newRevision).execute();
+    	file = service.files().update(clientFile.resource_id, file,
+          ByteArrayContent.fromString(clientFile.mimeType, clientFile.content))
+          .setNewRevision(newRevision).execute();
     } else { // If there is no content we patch the metadata only
       file = service.files()
           .patch(clientFile.resource_id, file)

@@ -92,9 +92,9 @@ public class ViewDriveFile  extends HttpServlet {
 	    // TODO: do not read on each request
 	    InputStream stream =
 	        getServletContext().getResourceAsStream(CLIENT_SECRETS_FILE_PATH);
-	    Reader reader = new InputStreamReader(stream);
 	    try {
-	      return GoogleClientSecrets.load(JSON_FACTORY, reader);
+	    	//new JacksonFactory().
+	      return GoogleClientSecrets.load(JSON_FACTORY, stream);
 	    } catch (IOException e) {
 	      throw new RuntimeException("No client_secrets.json found");
 	    }
@@ -140,7 +140,7 @@ public class ViewDriveFile  extends HttpServlet {
 		   */
 		  protected void sendGoogleJsonResponseError(HttpServletResponse resp,
 		      GoogleJsonResponseException e) {
-		    sendError(resp, e.getDetails().code, e.getLocalizedMessage());
+		    sendError(resp, e.getStatusCode(), e.getLocalizedMessage());
 		  }
 		  
 		  protected void deleteCredential(HttpServletRequest req,

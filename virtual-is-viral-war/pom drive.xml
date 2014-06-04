@@ -81,7 +81,7 @@
 		
 		<!-- Google Drive -->
 		
-        <!--dependency>
+		<dependency>
 			<groupId>com.google.api.client</groupId>
 			<artifactId>google-api-client-googleapis</artifactId>
 			<version>1.4.1-beta</version>
@@ -109,8 +109,9 @@
 		<dependency>
 			<groupId>com.google.apis</groupId>
 			<artifactId>google-api-services-oauth2</artifactId>
+			<!--version>v2-rev70-1.18.0-rc</version-->
 			<version>v2-rev35-1.14.2-beta</version>
-		</dependency-->
+		</dependency>
 		
 		
         <!-- Test Dependencies -->

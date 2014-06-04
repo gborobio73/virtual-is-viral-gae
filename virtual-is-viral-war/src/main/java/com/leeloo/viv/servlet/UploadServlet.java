@@ -15,7 +15,6 @@ import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
-import com.leeloo.viv.work.Work;
 import com.leeloo.viv.work.repository.IdGenerator;
 import com.leeloo.viv.work.repository.WorkFactory;
 import com.leeloo.viv.work.repository.WorkRepo;

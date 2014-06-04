@@ -33,7 +33,7 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson.JacksonFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.oauth2.Oauth2;
-import com.google.api.services.oauth2.model.Userinfoplus;
+import com.google.api.services.oauth2.model.Userinfo;
 import com.google.gson.Gson;
 
 /**
@@ -134,7 +134,7 @@ public abstract class DrEditServlet extends HttpServlet {
    */
   protected void sendGoogleJsonResponseError(HttpServletResponse resp,
       GoogleJsonResponseException e) {
-    sendError(resp, e.getDetails().code, e.getLocalizedMessage());
+    sendError(resp, e.getStatusCode(), e.getLocalizedMessage());
   }
 
   /**
@@ -171,7 +171,7 @@ public abstract class DrEditServlet extends HttpServlet {
       // request userinfo
       Oauth2 service = getOauth2Service(credential);
       try {
-        Userinfoplus about = service.userinfo().get().execute();
+        Userinfo about = service.userinfo().get().execute();
         String id = about.getId();
         credentialManager.save(id, credential);
         req.getSession().setAttribute(KEY_SESSION_USERID, id);
@@ -242,9 +242,8 @@ public abstract class DrEditServlet extends HttpServlet {
     // TODO: do not read on each request
     InputStream stream =
         getServletContext().getResourceAsStream(CLIENT_SECRETS_FILE_PATH);
-    Reader reader = new InputStreamReader(stream);
     try {
-      return GoogleClientSecrets.load(JSON_FACTORY, reader);
+      return GoogleClientSecrets.load(JSON_FACTORY, stream);
     } catch (IOException e) {
       throw new RuntimeException("No client_secrets.json found");
     }
