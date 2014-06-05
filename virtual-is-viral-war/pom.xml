@@ -86,11 +86,13 @@
 			<artifactId>google-api-client-googleapis</artifactId>
 			<version>1.4.1-beta</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>com.google.api.client</groupId>
 			<artifactId>google-api-client-http</artifactId>
 			<version>1.2.3-alpha</version>
 		</dependency>	
+		
 		<dependency>
 			<groupId>com.google.api-client</groupId>
 			<artifactId>google-api-client</artifactId>
@@ -111,6 +113,18 @@
 			<artifactId>google-api-services-oauth2</artifactId>
 			<version>v2-rev35-1.14.2-beta</version>
 		</dependency-->
+		<dependency>
+			<groupId>com.google.oauth-client</groupId>
+			<artifactId>google-oauth-client-appengine</artifactId>
+			<version>1.18.0-rc</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.http-client</groupId>
+			<artifactId>google-http-client-jackson</artifactId>
+			<version>1.18.0-rc</version>
+		</dependency>
+		
+
 		
 		
         <!-- Test Dependencies -->
