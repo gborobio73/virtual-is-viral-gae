@@ -1,7 +1,9 @@
 package com.leeloo.viv.servlet;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import javax.jdo.JDOHelper;
 import javax.servlet.ServletException;
@@ -12,7 +14,7 @@ import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.AuthorizationCodeResponseUrl;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.appengine.auth.oauth2.AbstractAppEngineAuthorizationCodeCallbackServlet;
-import com.google.api.client.extensions.jdo.auth.oauth2.JdoCredentialStore;
+
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.javanet.NetHttpTransport;
@@ -46,13 +48,29 @@ public class DriveServletCallbackSample extends AbstractAppEngineAuthorizationCo
 	    return url.build();
 	  }
 
+//	  @Override
+//	  protected AuthorizationCodeFlow initializeFlow() throws IOException {
+//	    return new GoogleAuthorizationCodeFlow.Builder(new NetHttpTransport(), new JacksonFactory(),
+//	        "CLIENT_ID", "CLIENT_SECRET",
+//	        Collections.singleton(DriveScopes.DRIVE)).setCredentialStore(
+//	        new JdoCredentialStore(JDOHelper.getPersistenceManagerFactory("transactions-optional")))
+//	        .build();
+//	  }
+	  
 	  @Override
 	  protected AuthorizationCodeFlow initializeFlow() throws IOException {
-	    return new GoogleAuthorizationCodeFlow.Builder(new NetHttpTransport(), new JacksonFactory(),
-	        "CLIENT_ID", "CLIENT_SECRET",
-	        Collections.singleton(DriveScopes.DRIVE)).setCredentialStore(
-	        new JdoCredentialStore(JDOHelper.getPersistenceManagerFactory("transactions-optional")))
-	        .build();
+		  List<String> scopes = Arrays.asList(
+    		      // Required to access and manipulate files.
+    		      "https://www.googleapis.com/auth/drive.file",
+    		      // Required to identify the user in our data store.
+    		      "https://www.googleapis.com/auth/userinfo.email",
+    		      "https://www.googleapis.com/auth/userinfo.profile");
+		  return new GoogleAuthorizationCodeFlow.Builder(new NetHttpTransport(),
+					new JacksonFactory(), CLIENT_ID, CLIENT_SECRET,  scopes)
+			.setAccessType("offline").setApprovalPrompt("auto").build(); 
+//	    return new GoogleAuthorizationCodeFlow.Builder(new UrlFetchTransport(), new JacksonFactory(),
+//	        "[[ENTER YOUR CLIENT ID]]", "[[ENTER YOUR CLIENT SECRET]]",scopes).setCredentialStore(
+//	        new AppEngineCredentialStore()).build();
 	  }
 
 	  @Override

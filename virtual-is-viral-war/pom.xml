@@ -95,6 +95,36 @@
 			<artifactId>google-api-client-appengine</artifactId>
 			<version>1.18.0-rc</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.oauth-client</groupId>
+			<artifactId>google-oauth-client-appengine</artifactId>
+			<version>1.18.0-rc</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.http-client</groupId>
+			<artifactId>google-http-client-jackson</artifactId>
+			<version>1.18.0-rc</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.oauth-client</groupId>
+			<artifactId>google-oauth-client-servlet</artifactId>
+			<version>1.16.0-rc</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.http-client</groupId>
+			<artifactId>google-http-client</artifactId>
+			<version>1.16.0-rc</version>
+		</dependency>
+		<dependency>
+   			 <groupId>com.google.oauth-client</groupId>
+ 			 <artifactId>google-oauth-client-java7</artifactId>
+		   	 <version>1.16.0-rc</version>
+		</dependency>
+		<dependency>
+  		  <groupId>com.google.oauth-client</groupId>
+ 		   <artifactId>google-oauth-client-jetty</artifactId>
+ 		   <version>1.16.0-rc</version>
+		</dependency>
 		
 				
         <!--dependency>
@@ -129,20 +159,7 @@
 			<artifactId>google-api-services-oauth2</artifactId>
 			<version>v2-rev35-1.14.2-beta</version>
 		</dependency-->
-		<dependency>
-			<groupId>com.google.oauth-client</groupId>
-			<artifactId>google-oauth-client-appengine</artifactId>
-			<version>1.18.0-rc</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.http-client</groupId>
-			<artifactId>google-http-client-jackson</artifactId>
-			<version>1.18.0-rc</version>
-		</dependency>
-		
-
-		
-		
+				
         <!-- Test Dependencies -->
         <dependency>
             <groupId>com.google.appengine</groupId>
