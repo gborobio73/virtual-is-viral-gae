@@ -22,6 +22,7 @@ import com.google.api.client.extensions.appengine.datastore.AppEngineDataStoreFa
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeRequestUrl;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeTokenRequest;
+import com.google.api.client.http.FileContent;
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.services.drive.Drive;
@@ -29,6 +30,7 @@ import com.google.api.services.drive.DriveScopes;
 import com.google.api.services.drive.Drive.Files;
 import com.google.api.services.drive.model.File;
 import com.google.api.services.drive.model.FileList;
+import com.google.api.services.drive.model.Permission;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.DataStore;
 import com.google.appengine.api.blobstore.BlobKey;
@@ -84,36 +86,7 @@ public class AuthorizeDriveServletCallback extends HttpServlet {
           TokenResponse tokenResponse = tokenRequest.execute();
           Credential credential = flow.createAndStoreCredential(tokenResponse, userId);
           
-          PrintWriter writer = resp.getWriter();
-          Drive drive = new Drive.Builder(new NetHttpTransport(),new JacksonFactory(), credential).setApplicationName(
-		          "Virtual is viral").build();
-          writer.write("<html><body>Listing My files<br>");		  		
-          List<File> result = new ArrayList<File>();
-          Files.List request = drive.files().list();
-		  do {
-			  try {
-				  FileList files = request.execute();
-
-				  result.addAll(files.getItems());
-				  request.setPageToken(files.getNextPageToken());
-			  } catch (IOException e) {
-				  System.out.println("An error occurred: " + e);
-				  request.setPageToken(null);
-		      }
-		  } while (request.getPageToken() != null &&
-				  request.getPageToken().length() > 0);
-		    
-		  writer.write("number of files:" + result.size());
-		    
-		  for(Iterator<File> i = result.iterator(); i.hasNext(); ) {
-			  File item = i.next();
-			  writer.write(item.getTitle() + "<br>");
-			  writer.write(item.getId()+ "<br>");
-			  writer.write(item.getDownloadUrl()+ "<br>");
-		        //System.out.println(item.getPermissions().get(0).getRole());
-		        //when doc is public https://drive.google.com/uc?id=FILE-ID
-		  }
-		  writer.write("</body></html>");        
+          DrivePocHelper.writeAndReadFiles(resp, credential); 
       }
       
            

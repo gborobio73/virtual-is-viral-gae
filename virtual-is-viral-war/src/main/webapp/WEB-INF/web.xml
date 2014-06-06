@@ -132,6 +132,14 @@
         <url-pattern>/authorizedrivecallback</url-pattern>
     </servlet-mapping>
 	
+	<servlet>
+        <servlet-name>AppIdentity</servlet-name>
+        <servlet-class>com.leeloo.viv.servlet.AppIdentityServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AppIdentity</servlet-name>
+        <url-pattern>/appidentity</url-pattern>
+    </servlet-mapping>
 	
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>

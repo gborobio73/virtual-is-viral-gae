@@ -1,8 +1,11 @@
 package com.leeloo.viv.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -21,11 +24,15 @@ import com.google.api.client.extensions.appengine.datastore.AppEngineDataStoreFa
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeRequestUrl;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeTokenRequest;
+import com.google.api.client.http.FileContent;
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
+import com.google.api.services.drive.Drive.Files;
 import com.google.api.services.drive.model.File;
+import com.google.api.services.drive.model.FileList;
+import com.google.api.services.drive.model.Permission;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.DataStore;
 import com.google.api.client.util.store.FileDataStoreFactory;
@@ -88,9 +95,12 @@ public class AuthorizeDriveServlet extends HttpServlet {
             	  resp.sendRedirect(url);
               }
               else{
-            	  resp.getWriter().write("<html><body><p>Already authorized</p></html></body>");
+            	  System.out.println("Already authorized");
+            	  DrivePocHelper.writeAndReadFiles(resp, credential);
               }
           }          
       }      
     }
+
+	
 }
