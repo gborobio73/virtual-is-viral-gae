@@ -37,7 +37,7 @@ public class UploadServlet extends HttpServlet {
         }
     	
         Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);		
-        List<BlobKey> blobKey = blobs.get("file");
+        List<BlobKey> blobKey = blobs.get("myFileName");
 
         if (blobKey == null) {
             res.sendRedirect("/error.html");

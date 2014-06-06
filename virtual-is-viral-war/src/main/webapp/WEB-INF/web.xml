@@ -27,7 +27,7 @@
 
     <servlet>
         <servlet-name>Upload</servlet-name>
-        <servlet-class>com.leeloo.viv.servlet.UploadServlet</servlet-class>
+        <servlet-class>com.leeloo.viv.servlet.DriveUploadServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Upload</servlet-name>
@@ -58,13 +58,37 @@
 
 	<!-- Google Drive -->
 	<servlet>
+   		<servlet-name>TestDrive</servlet-name>
+   		<servlet-class>com.leeloo.viv.servlet.TestDrive</servlet-class>
+ 	</servlet> 
+	<servlet-mapping>
+   		<servlet-name>TestDrive</servlet-name>
+   		<url-pattern>/testdrive</url-pattern>
+ 	</servlet-mapping>	
+	<servlet>
+   		<servlet-name>DriveSample</servlet-name>
+   		<servlet-class> com.leeloo.viv.servlet.DriveAppEngineSample</servlet-class>
+ 	</servlet> 
+	<servlet-mapping>
+   		<servlet-name>DriveSample</servlet-name>
+   		<url-pattern>/drivesample</url-pattern>
+ 	</servlet-mapping>
+	<servlet>
+   		<servlet-name>OAuthCodeCallbackHandlerServlet</servlet-name>
+   		<servlet-class> com.leeloo.viv.servlet.DriveAppEngineCallbackSample</servlet-class>
+ 	</servlet> 
+	<servlet-mapping>
+   		<servlet-name>OAuthCodeCallbackHandlerServlet</servlet-name>
+   		<url-pattern>/oauth2callback</url-pattern>
+ 	</servlet-mapping>
+	<!--servlet>
 		<servlet-name>ViewDriveFile</servlet-name>
 		<servlet-class>com.leeloo.viv.servlet.drive.ViewDriveFile</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ViewDriveFile</servlet-name>
 		<url-pattern>/viewdrivefile</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping-->
 	
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
