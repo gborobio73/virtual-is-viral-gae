@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <servlet>
-        <servlet-name>work</servlet-name>
-        <servlet-class>com.leeloo.viv.servlet.WorkServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>work</servlet-name>
-        <url-pattern>/work</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>logout</servlet-name>
         <servlet-class>com.leeloo.viv.servlet.LogoutServlet</servlet-class>
     </servlet>
@@ -24,10 +16,9 @@
         <servlet-name>login</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>Upload</servlet-name>
-        <servlet-class>com.leeloo.viv.servlet.DriveUploadServlet</servlet-class>
+        <servlet-class>com.leeloo.viv.servlet.UploadServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Upload</servlet-name>
@@ -56,91 +47,6 @@
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
 
-	<!-- Google Drive -->
-	<servlet>
-   		<servlet-name>TestDrive</servlet-name>
-   		<servlet-class>com.leeloo.viv.servlet.TestDrive</servlet-class>
- 	</servlet> 
-	<servlet-mapping>
-   		<servlet-name>TestDrive</servlet-name>
-   		<url-pattern>/testdrive</url-pattern>
- 	</servlet-mapping>	
-	<servlet>
-   		<servlet-name>DriveSample</servlet-name>
-   		<servlet-class> com.leeloo.viv.servlet.DriveAppEngineSample</servlet-class>
- 	</servlet> 
-	<servlet-mapping>
-   		<servlet-name>DriveSample</servlet-name>
-   		<url-pattern>/drivesample</url-pattern>
- 	</servlet-mapping>
-	<servlet>
-   		<servlet-name>OAuthCodeCallbackHandlerServlet</servlet-name>
-   		<servlet-class> com.leeloo.viv.servlet.DriveAppEngineCallbackSample</servlet-class>
- 	</servlet> 
-	<servlet-mapping>
-   		<servlet-name>OAuthCodeCallbackHandlerServlet</servlet-name>
-   		<url-pattern>/oauth2callback</url-pattern>
- 	</servlet-mapping>
-	<!--servlet>
-		<servlet-name>ViewDriveFile</servlet-name>
-		<servlet-class>com.leeloo.viv.servlet.drive.ViewDriveFile</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ViewDriveFile</servlet-name>
-		<url-pattern>/viewdrivefile</url-pattern>
-	</servlet-mapping-->
-	
-	<servlet>
-        <servlet-name>Sample</servlet-name>
-        <servlet-class>com.leeloo.viv.servlet.DriveServletSample</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Sample</servlet-name>
-        <url-pattern>/sample</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>CallBack</servlet-name>
-        <servlet-class>com.leeloo.viv.servlet.DriveServletCallbackSample</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CallBack</servlet-name>
-        <url-pattern>/callback</url-pattern>
-    </servlet-mapping>
-	<servlet>
-        <servlet-name>InstalledApp</servlet-name>
-        <servlet-class>com.leeloo.viv.servlet.InstalledAppDriveSample</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>InstalledApp</servlet-name>
-        <url-pattern>/installedapp</url-pattern>
-    </servlet-mapping>
-	
-	<servlet>
-        <servlet-name>AuthorizeDrive</servlet-name>
-        <servlet-class>com.leeloo.viv.servlet.AuthorizeDriveServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AuthorizeDrive</servlet-name>
-        <url-pattern>/authorizedrive</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>AuthorizeDriveCallback</servlet-name>
-        <servlet-class>com.leeloo.viv.servlet.AuthorizeDriveServletCallback</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AuthorizeDriveCallback</servlet-name>
-        <url-pattern>/authorizedrivecallback</url-pattern>
-    </servlet-mapping>
-	
-	<servlet>
-        <servlet-name>AppIdentity</servlet-name>
-        <servlet-class>com.leeloo.viv.servlet.AppIdentityServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AppIdentity</servlet-name>
-        <url-pattern>/appidentity</url-pattern>
-    </servlet-mapping>
-	
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>

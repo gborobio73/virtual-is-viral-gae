@@ -15,4 +15,4 @@ Run:
 inspect angular scope
 angular.element($0).scope()
 
---port=8181 --address=192.168.0.11 --disable_update_check /Users/Gon/Projects/.metadata/.plugins/org.eclipse.wst.server.core/tmp3/virtual-is-viral-war
+debug in --address=192.168.0.10 --port=8080 --disable_update_check /Users/Gon/Projects/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/virtual-is-viral-war
