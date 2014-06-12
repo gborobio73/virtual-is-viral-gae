@@ -5,20 +5,21 @@
 	max-width: 90%;
 	border-radius: 3px;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.9);
-  margin-left: 20%;
+  	margin-left: 10px;
+  	margin-top: 10px;
 }
 
 .image-footer
 {
 	padding-top: 10px;
-  margin-left: 20%;
+  	margin-left: 10px;
 }
 
 .image-footer:empty
 {
 	top: 50%;
 	left: 50%;
-  padding-left: 10px;
+  	padding-left: 10px;
 	-webkit-transform: translate(-50%, -50%);
 	-moz-transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);
