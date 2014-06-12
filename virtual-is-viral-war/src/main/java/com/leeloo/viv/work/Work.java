@@ -4,12 +4,13 @@ import java.util.*;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 
 @Entity
 public class Work{
   
 	@Id public String id;
-	public String user;
+	@Index public String user;
 	public String name;
 	public String description;
 	public String imageId;
@@ -39,15 +40,6 @@ public class Work{
 		comments.add(new Comment(id, commentUser, commentText));		
 	}
 
-	private String getNewId() {
-		if(comments.size()==0) return "1";
-		else{
-			String lastId = comments.get(comments.size()-1).id;
-			return Integer.toString(Integer.parseInt(lastId) + 1);
-		}
-		
-	}
-
 	public void deleteComment(String commentIdToDelete, String whosDeleting) {
 		Iterator<Comment> it = comments.iterator();
 		while (it.hasNext()) {
@@ -60,5 +52,19 @@ public class Work{
 				
 			}	
 		}		
+	}
+
+	public void setDetails(String name, String description) {
+		this.name= name;
+		this.description=description;
+	}
+	
+	private String getNewId() {
+		if(comments.size()==0) return "1";
+		else{
+			String lastId = comments.get(comments.size()-1).id;
+			return Integer.toString(Integer.parseInt(lastId) + 1);
+		}
+		
 	}
 }

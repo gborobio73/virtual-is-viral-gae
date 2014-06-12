@@ -5,17 +5,20 @@
 	max-width: 90%;
 	border-radius: 3px;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.9);
+  margin-left: 20%;
 }
 
 .image-footer
 {
-	padding-top: 10px;	
+	padding-top: 10px;
+  margin-left: 20%;
 }
 
 .image-footer:empty
 {
 	top: 50%;
 	left: 50%;
+  padding-left: 10px;
 	-webkit-transform: translate(-50%, -50%);
 	-moz-transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);
@@ -24,8 +27,7 @@
 }
 
 .description{
-	position: relative;
-	
+    position: relative;
     color: #333;
     margin: 0;
     border-bottom: 1px solid #ccc;

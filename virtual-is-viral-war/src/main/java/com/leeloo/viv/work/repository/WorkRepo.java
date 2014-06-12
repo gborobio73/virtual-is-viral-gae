@@ -24,6 +24,10 @@ public class WorkRepo {
 		return ofy().load().type(Work.class).list();
 	}
 
+	public List<Work> getFromUser(String user)	{
+		return ofy().load().type(Work.class).filter("user", user).list();
+	}
+	
 	public void save(Work work) {
     	ofy().save().entity(work).now();		
 	}

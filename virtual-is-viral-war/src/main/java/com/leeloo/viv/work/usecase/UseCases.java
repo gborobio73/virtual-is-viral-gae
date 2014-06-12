@@ -35,5 +35,13 @@ public class UseCases{
 		work.deleteComment(commentId, userWhosDeleting);
 		
 		repo.save(work);
-	}  
+	}
+	
+	public void editWorkDetails(String workId, String name, String description){
+		Work work = repo.get(workId);
+		
+		work.setDetails(name, description);
+		
+		repo.save(work);
+	}
 }
