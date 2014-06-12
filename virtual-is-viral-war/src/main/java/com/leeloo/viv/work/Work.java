@@ -14,15 +14,10 @@ public class Work{
 	public String name;
 	public String description;
 	public String imageId;
-	public List<Comment> comments;
+	public List<Comment> comments = new ArrayList<Comment>();;
 	public Date created;
 	
-	public Work(){
-		if(comments == null)
-		{
-			comments = new ArrayList<Comment>();
-		}
-	}
+	public Work(){	}
 	
 	public Work(String id, String user, String name, String description, String imageId)
 	{
