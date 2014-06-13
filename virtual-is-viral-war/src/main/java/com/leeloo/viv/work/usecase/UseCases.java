@@ -1,5 +1,7 @@
 package com.leeloo.viv.work.usecase;
 
+import java.util.List;
+
 import com.leeloo.viv.work.Notification;
 import com.leeloo.viv.work.Work;
 import com.leeloo.viv.work.repository.IdGenerator;
@@ -22,11 +24,11 @@ public class UseCases{
 	  
 	  work.addComment(user, commentText);	  
 	  repo.save(work);
-	  
-	  String notification = user + " has commented your work " + work.name;
-	  Notification noti = new NotificationFactory(new IdGenerator()).createNotification(work.user, workId, notification);	  
-	  notiRepo.save(noti);
-	  
+	 
+	  if(userIsNotCommentingHisOwnWork(user, work)){
+		  Notification noti = new NotificationFactory(new IdGenerator()).createNotification(user, work);
+		  notiRepo.save(noti);
+	  }
 	}
 
 	public void deleteCommentFromWork(String workId, String commentId,String userWhosDeleting){
@@ -43,5 +45,17 @@ public class UseCases{
 		work.setDetails(name, description);
 		
 		repo.save(work);
+	}
+
+	public void markAllNotificationsAsRead(String user) {
+		List<Notification> notifications= notiRepo.getUserUnreadNotifications(user);
+		for(Notification n: notifications){
+			n.markAsRead();
+		}
+		notiRepo.save(notifications);
+	}
+	
+	private boolean userIsNotCommentingHisOwnWork(String user, Work work) {
+		return !work.user.equals(user);
 	}
 }

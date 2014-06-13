@@ -2,20 +2,16 @@ angular.module('vivControllers').controller(
   'userDataController', function ($scope, $location, services) {
     $scope.user = {};
 
-    var getUnreadNotificationsAmount = function(){
-      services.getUnreadNotificationsAmount().then(
+    var getUnreadNotifications = function(){
+      services.getUnreadNotifications().then(
         function(result) {
+          console.log('getUnreadNotifications amount -> ' + result.length);
+          $scope.unreadNotificationsAmount = result.length;
+          console.log('getUnreadNotifications -> ' + JSON.stringify(result));
           $scope.unreadNotifications = result;
           }); 
     }
 
-    var getNotifications = function(){
-      services.getNotifications().then(
-        function(result) {
-          $scope.notifications = result;
-          }); 
-    }
-    
     var getUser = function(){
       services.getUser().then(
         function(result) {
@@ -33,11 +29,10 @@ angular.module('vivControllers').controller(
 
     getUser();
     getLogoutUrl();
-    getUnreadNotificationsAmount();
-    getNotifications();
+    getUnreadNotifications();
 
     $scope.markAllNotificationsAsRead = function() {
-        console.log("markAllNotificationsAsRead:");
-        $scope.unreadNotifications = 0;
+        services.markNotificationsAsRead();
+        $scope.unreadNotificationsAmount = 0;
     };    
   });

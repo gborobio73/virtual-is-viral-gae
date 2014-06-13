@@ -26,8 +26,8 @@ angular.module('vivServices').factory('services', function($http, $http) {
                             return result.data;
                         });
         };
-    services.getUnreadNotificationsAmount = function(){
-             return $http.get('/rest/notifications/unreadamount/')
+    services.getUnreadNotifications = function(){
+             return $http.get('/rest/notifications/unread/')
                        .then(function(result) {
                             //resolve the promise as the data
                             return result.data;
@@ -40,6 +40,14 @@ angular.module('vivServices').factory('services', function($http, $http) {
                             //resolve the promise as the data
                             return result.data;
                         });
+        };
+    services.markNotificationsAsRead = function(){
+            //return the promise directly.
+                 return $http.post('/rest/notifications/markallread')
+                           .then(function(result) {
+                        	   console.log('/rest/notifications/markallread -> ' + JSON.stringify(result.data));
+                                return result.data;
+                            });
         };
     services.getUser = function(){
              return $http.get('/rest/user/')

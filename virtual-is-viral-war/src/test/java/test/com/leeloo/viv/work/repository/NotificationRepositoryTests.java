@@ -12,9 +12,11 @@ import org.junit.Test;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.leeloo.viv.work.Notification;
+import com.leeloo.viv.work.Work;
 import com.leeloo.viv.work.repository.IdGenerator;
 import com.leeloo.viv.work.repository.NotificationFactory;
 import com.leeloo.viv.work.repository.NotificationRepo;
+import com.leeloo.viv.work.repository.WorkFactory;
 
 public class NotificationRepositoryTests {
 	static LocalServiceTestHelper helper =  new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());
@@ -33,55 +35,54 @@ public class NotificationRepositoryTests {
 	
 	@Test
 	public void NotificationRepo_getUserNotifications_getsAllUserNotifications() {
-		String toWhom = "gborobio@gmail.com";
-		String workId = "213drw423";
-		String text = "Leeloo commented on your work.";
-		String anotherWorkId = "9877wsddsi98779";
-		String anotherText = "Leeloo commented on your work.";
 		
-		Notification notification = factory.createNotification(toWhom, workId , text);
+		String user = "gborobio@gmail.com";
+		String commentingUser = "leeloo@gmail.com";
+		
+		Work work = new WorkFactory(new IdGenerator()).createWork(user, "TBD", "A work", "", "");
+		
+		Notification notification = factory.createNotification(commentingUser, work);
 		repo.save(notification);
-		notification = factory.createNotification(toWhom, anotherWorkId , anotherText);
+		notification = factory.createNotification(commentingUser, work);
 		repo.save(notification);
 		
-		List<Notification> notis = repo.getUserNotifications(toWhom);
+		List<Notification> notis = repo.getUserNotifications(user);
 		
 		assertEquals(notis.size(), 2);
 	}
 	
 	@Test
 	public void NotificationRepo_markAsRead_marksNotificationAsRead() {
-		String toWhom = "anotherUser@gmail.com";
-		String workId = "6767wqhkakas987";
-		String text = "Leeloo commented on your work.";
+		String user = "anotherUser@gmail.com";				
+		Work work = new WorkFactory(new IdGenerator()).createWork(user, "TBD", "A work", "", "");
 		
-		Notification notification = factory.createNotification(toWhom, workId , text);
+		String commentingUser = "leeloo@gmail.com";
+		Notification notification = factory.createNotification(commentingUser, work);
 		repo.save(notification);
 		
 		notification.markAsRead();		
 		repo.save(notification);
 		
-		Notification readNotification = repo.getUserNotifications(toWhom).get(0);		
+		Notification readNotification = repo.getUserNotifications(user).get(0);		
 		assertTrue(readNotification.isRead());
 	}
 
 	@Test
 	public void NotificationRepo_getUserUnreadNotifications_getsAllUserUnreadNotifications() {
-		String toWhom = "yetAnothe.user@gmail.com";
-		String workId = "213drw423";
-		String text = "Leeloo commented on your work.";
-		String anotherWorkId = "9877wsddsi98779";
-		String anotherText = "Leeloo commented on your work.";
+		String user = "yetAnothe.user@gmail.com";
+		Work work = new WorkFactory(new IdGenerator()).createWork(user, "TBD", "A work", "", "");
 		
-		Notification notification = factory.createNotification(toWhom, workId , text);
+		String commentingUser = "leeloo@gmail.com";
+		
+		Notification notification = factory.createNotification(commentingUser, work);
 		repo.save(notification);
-		notification = factory.createNotification(toWhom, anotherWorkId , anotherText);
+		notification = factory.createNotification(commentingUser, work);
 		notification.markAsRead();
 		repo.save(notification);
 		
-		List<Notification> notis = repo.getUserUnreadNotifications(toWhom);
+		List<Notification> notis = repo.getUserUnreadNotifications(user);
 		assertEquals(notis.size(), 1);
-		assertEquals(notis.get(0).workId, workId);
+		assertEquals(notis.get(0).workId, work.id);
 	}
 	
 }

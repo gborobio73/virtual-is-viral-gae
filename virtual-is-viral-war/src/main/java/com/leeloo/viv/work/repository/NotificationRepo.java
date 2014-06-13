@@ -20,6 +20,10 @@ public class NotificationRepo {
 	public void save(Notification noti) {
     	ofy().save().entity(noti).now();		
 	}
+	
+	public void save(List<Notification> notifications) {
+    	ofy().save().entities(notifications).now();		
+	}
 
 	public List<Notification> getUserNotifications(String toWhom) {
 		return ofy().load().type(Notification.class).filter("toWhom", toWhom).order("-created").list();	
