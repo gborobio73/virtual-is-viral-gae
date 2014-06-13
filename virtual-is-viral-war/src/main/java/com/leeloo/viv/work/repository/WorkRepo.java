@@ -21,7 +21,7 @@ public class WorkRepo {
 	}
 	
 	public List<Work> getAll()	{
-		return ofy().load().type(Work.class).list();
+		return ofy().load().type(Work.class).order("-created").list();
 	}
 
 	public List<Work> getFromUser(String user)	{

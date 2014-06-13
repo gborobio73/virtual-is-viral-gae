@@ -8,8 +8,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.NewCookie;
-import javax.xml.bind.annotation.XmlRootElement;
 
 import java.util.List;
 
@@ -19,7 +17,8 @@ import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.api.users.User;
 import com.leeloo.viv.rest.jsonpojos.CommentToDelete;
 import com.leeloo.viv.rest.jsonpojos.NewComment;
-import com.leeloo.viv.work.Work;
+import com.leeloo.viv.rest.jsonpojos.UiWork;
+import com.leeloo.viv.rest.jsonpojos.UiWorkMapper;
 import com.leeloo.viv.work.repository.WorkRepo;
 import com.leeloo.viv.work.usecase.UseCases;
 
@@ -37,7 +36,8 @@ public class WorksApi {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         } 
 
-        List<Work> works = new WorkRepo().getAll();
+        List<UiWork> works = new UiWorkMapper().map(new WorkRepo().getAll());
+        
         return Response.ok().entity(gson.toJson(works)).build();
     }
 
@@ -52,7 +52,7 @@ public class WorksApi {
 
         User currentUser = userService.getCurrentUser();
 
-        List<Work> works = new WorkRepository().getUserWorks(currentUser.getNickname());
+        List<UiWork> works =  new UiWorkMapper().map(new WorkRepo().getFromUser(currentUser.getNickname()));
         return Response.ok().entity(gson.toJson(works)).build();
     }
 
@@ -65,7 +65,7 @@ public class WorksApi {
              return Response.status(Response.Status.UNAUTHORIZED).build();
          } 
         
-        Work work = new WorkRepo().get(id);
+        UiWork work =  new UiWorkMapper().map(new WorkRepo().get(id));
         return Response.ok().entity(gson.toJson(work)).build();
     }
     

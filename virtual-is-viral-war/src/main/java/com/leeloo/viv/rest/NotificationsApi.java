@@ -14,7 +14,6 @@ import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
 import com.leeloo.viv.work.Notification;
 import com.leeloo.viv.work.repository.NotificationRepo;
-import com.leeloo.viv.work.repository.NotificationsRepository;
 
 
 @Path("notifications")

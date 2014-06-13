@@ -5,6 +5,6 @@ public class NullWork extends Work
 {
   public NullWork()
   {
-    super("0","", "", "", "");
+    super("0","", "", "", "", "");
   }
 }

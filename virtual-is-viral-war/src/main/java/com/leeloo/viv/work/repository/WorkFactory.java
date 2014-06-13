@@ -1,8 +1,5 @@
 package com.leeloo.viv.work.repository;
 
-import java.util.ArrayList;
-
-import com.leeloo.viv.work.Comment;
 import com.leeloo.viv.work.Work;
 
 public class WorkFactory {
@@ -15,10 +12,10 @@ public class WorkFactory {
 	}
 	
 
-	public Work createWork(String user, String name, String description, String imageId)
+	public Work createWork(String user, String name, String description, String imageId, String imageUrl)
 	{
 		String id = idGenerator.generateId();
 		
-		return new Work(id, user, name, description, imageId);
+		return new Work(id, user, name, description, imageId, imageUrl);
 	}
 }

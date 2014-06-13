@@ -1,5 +1,5 @@
 <div nav-menu></div>
-<img src='./serve?blob-key={{work.imageId}}' class = "image-details"/>
+<img src='{{work.imagelUrl}}' class = "image-details"/>
 <div class = "image-footer">     
 	<p>{{work.name}}: {{work.description}} by {{work.user}}. Added on {{work.created}}</p>
    	<p>Comments:</p>
@@ -14,21 +14,3 @@
 		<button ng-click="addComment()">Add</button>
 	</div>
 </div>
-
-<!--div nav-menu></div>
-<div class="wrap" >
-  <div class="box-details" >
-    <div class="pin" >
-      <img src='./serve?blob-key={{work.imageId}}' class = "image-details"/>
-      <div class = "description">{{work.name}}: {{work.description}} by {{work.user}}</div>
-      <div class = "description">
-        <p>Comments:</p>
-        <div ng-repeat="comment in work.comments" >
-          <p>{{comment.user}} commented: {{comment.comment}} on {{comment.date}}
-            <a href="" ng-show="canDelete(comment, work)">Delete</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div-->

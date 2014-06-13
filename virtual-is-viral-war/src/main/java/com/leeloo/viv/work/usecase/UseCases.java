@@ -12,8 +12,8 @@ public class UseCases{
 	private WorkRepo repo = new WorkRepo();
 	private NotificationRepo notiRepo = new NotificationRepo();
 
-	public void createWork(String user, String title, String description, String imageId){
-		Work work = new WorkFactory(new IdGenerator()).createWork(user, title, description, imageId);
+	public void createWork(String user, String title, String description, String imageId, String imageUrl){
+		Work work = new WorkFactory(new IdGenerator()).createWork(user, title, description, imageId, imageUrl);
     	repo.save(work);
 	}
 	

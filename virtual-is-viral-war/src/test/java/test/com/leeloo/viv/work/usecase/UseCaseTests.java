@@ -31,7 +31,8 @@ public class UseCaseTests {
 	public void UseCase_editWorkDetails_editsNameAndDescription() {
 		
 		String user ="me@goops.de";
-		useCases.createWork(user , "Selfie", "me and my self", "123456AADD");
+		String imageUrl = "http://127.0.0.1:8080/_ah/img/UPhf0_exYUM5Ro83tC3vaw=s900";
+		useCases.createWork(user , "Selfie", "me and my self", "123456AADD", imageUrl);
 		
 		String myWorkId = new WorkRepo().getFromUser(user).get(0).id;
 		

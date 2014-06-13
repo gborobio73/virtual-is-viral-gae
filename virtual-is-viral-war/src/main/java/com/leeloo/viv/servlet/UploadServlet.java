@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.images.ImagesService;
+import com.google.appengine.api.images.ImagesServiceFactory;
+import com.google.appengine.api.images.ServingUrlOptions;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -42,12 +45,18 @@ public class UploadServlet extends HttpServlet {
         if (blobKey == null) {
             res.sendRedirect("/error.html");
         } else {
-        	String imageId = blobKey.get(0).getKeyString();
+        	
+        	BlobKey currentUploadedBlob = blobKey.get(0);
+        	
+        	ImagesService imagesService = ImagesServiceFactory.getImagesService();
+        	ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(currentUploadedBlob);
+        	String imageUrl = imagesService.getServingUrl(options);        	
+        	String imageId = currentUploadedBlob.getKeyString();
         	String title = req.getParameter("title");
         	String description = req.getParameter("description");
         	User currentUser = userService.getCurrentUser();
         	
-        	new UseCases().createWork(currentUser.getNickname(), title, description, imageId);
+        	new UseCases().createWork(currentUser.getNickname(), title, description, imageId, imageUrl);
         	
         	res.sendRedirect("/login");
         }

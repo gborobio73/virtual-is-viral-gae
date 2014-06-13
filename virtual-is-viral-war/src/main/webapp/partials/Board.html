@@ -3,8 +3,7 @@
   <div class="box" ng-repeat="work in works | filter:w" >
     <div class="pin" >
       <a href="/#/Details/{{work.id}}">
-        <!--img src="./img/{{work.imageId}}.jpg"/-->
-        <img src="./serve?blob-key={{work.imageId}}"/>
+        <img src="{{work.imagelUrl}}"/>
       </a>
       <div class = "description">[{{$index + 1}}] {{work.id}}-{{work.name}}: {{work.description}}</div>
       <div class = "user">{{work.user}}</div>

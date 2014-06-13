@@ -6,7 +6,8 @@ import com.googlecode.objectify.annotation.Index;
 
 @Entity
 public class Notification{
-	@Id public String id;
+	 @Id Long id;
+	//@Id public String id;
 	@Index public String toWhom;
 	public String workId;
 	public String notification;
@@ -16,7 +17,7 @@ public class Notification{
 	
 	public Notification(String id, String toWhom, String workId, String notification)
 	{
-	    this.id = id;
+	    //this.id = id;
 	    this.toWhom = toWhom;
 	    this.workId = workId;
 	    this.notification = notification;    

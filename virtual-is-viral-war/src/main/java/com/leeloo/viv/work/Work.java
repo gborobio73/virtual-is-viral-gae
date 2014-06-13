@@ -14,19 +14,20 @@ public class Work{
 	public String name;
 	public String description;
 	public String imageId;
-	public List<Comment> comments = new ArrayList<Comment>();;
-	public Date created;
+	public String imageUrl;
+	public List<Comment> comments = new ArrayList<Comment>();
+	@Index public Date created;
 	
 	public Work(){	}
 	
-	public Work(String id, String user, String name, String description, String imageId)
+	public Work(String id, String user, String name, String description, String imageId, String imageUrl)
 	{
 	  this.id = id;
 	  this.user = user;
 	  this.name = name;
 	  this.description = description;
 	  this.imageId = imageId;
-	  this.comments = new ArrayList<Comment>();
+	  this.imageUrl = imageUrl;	  
 	  this.created = new Date();
 	}
 

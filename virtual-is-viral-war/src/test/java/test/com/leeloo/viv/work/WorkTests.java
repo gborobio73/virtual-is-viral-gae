@@ -17,8 +17,9 @@ public class WorkTests {
 		String user = "test@dom.com";		
 		String description ="My masterpiece";
 		String imageId = "ashdkdh7878asdjk";
+		String imageUrl = "http://127.0.0.1:8080/_ah/img/UPhf0_exYUM5Ro83tC3vaw=s900";
 		
-		Work work = workFactory.createWork(user , name , description, imageId);
+		Work work = workFactory.createWork(user , name , description, imageId, imageUrl);
 		
 		work.addComment(user, "some text");
 		work.addComment(user, "some more text");

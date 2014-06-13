@@ -18,6 +18,12 @@ public class WorkRepositoryTests {
 	static LocalServiceTestHelper helper =  new LocalServiceTestHelper(new LocalDatastoreServiceTestConfig());
 	WorkFactory workFactory = new WorkFactory(new IdGenerator());
 	
+	String name = "Title 1";
+	String user = "test@dom.com";		
+	String description ="My masterpiece";
+	String imageId = "ashdkdh7878asdjk";
+	String imageUrl = "http://127.0.0.1:8080/_ah/img/UPhf0_exYUM5Ro83tC3vaw=s900";
+	
 	@BeforeClass 
 	public static void setUp() {
 		helper.setUp();   
@@ -30,13 +36,7 @@ public class WorkRepositoryTests {
 	@Test
 	public void WorkRepo_save_savesWork() {
 		WorkRepo repo = new WorkRepo();
-		
-		String name = "Title 1";
-		String user = "test@dom.com";		
-		String description ="My masterpiece";
-		String imageId = "ashdkdh7878asdjk";
-		
-		Work work = workFactory.createWork(user , name , description, imageId);
+		Work work = workFactory.createWork(user , name , description, imageId, imageUrl);
 		
 		repo.save(work);
 		
@@ -45,7 +45,8 @@ public class WorkRepositoryTests {
 		assertEquals(work.id, savedWork.id);
 		assertEquals(work.user, savedWork.user);
 		assertEquals(work.description, savedWork.description);
-		assertEquals(work.imageId, savedWork.imageId);		
+		assertEquals(work.imageId, savedWork.imageId);
+		assertEquals(work.imageUrl, savedWork.imageUrl);	
 		
 	}
 	
@@ -53,12 +54,7 @@ public class WorkRepositoryTests {
 	public void WorkRepo_save_savesWorkWithCommentsRespectingOrder() {
 		WorkRepo repo = new WorkRepo();
 		
-		String name = "Title 1";
-		String user = "test@dom.com";		
-		String description ="My masterpiece";
-		String imageId = "ashdkdh7878asdjk";
-		
-		Work work = workFactory.createWork(user , name , description, imageId);
+		Work work = workFactory.createWork(user , name , description, imageId, imageUrl);
 		String commentUser = "user@g.de";
 		String commentText = "Hey, that's an awesome stuff";
 		
@@ -79,12 +75,7 @@ public class WorkRepositoryTests {
 	public void WorkRepo_save_savesWorkWithDeletedComment() {
 		WorkRepo repo = new WorkRepo();
 		
-		String name = "Title 1";
-		String user = "test@dom.com";		
-		String description ="My masterpiece";
-		String imageId = "ashdkdh7878asdjk";
-		
-		Work work = workFactory.createWork(user , name , description, imageId);
+		Work work = workFactory.createWork(user , name , description, imageId, imageUrl);
 		String workId = work.id;
 		
 		String commentUser = "user@g.de";
@@ -114,12 +105,7 @@ public class WorkRepositoryTests {
 	public void WorkRepo_save_savesWorkCreatedDate() throws InterruptedException {
 		WorkRepo repo = new WorkRepo();
 		
-		String name = "Title 1";
-		String user = "test@dom.com";		
-		String description ="My masterpiece";
-		String imageId = "ashdkdh7878asdjk";
-		
-		Work work = workFactory.createWork(user , name , description, imageId);
+		Work work = workFactory.createWork(user , name , description, imageId, imageUrl);
 		String workId = work.id;
 		
 		repo.save(work);
