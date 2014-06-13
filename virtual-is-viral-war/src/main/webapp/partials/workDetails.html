@@ -5,7 +5,6 @@
    	<p>Comments:</p>
    	<div ng-repeat="comment in work.comments" >
  	    <p>{{comment.user}} commented: {{comment.comment}} on {{comment.date}}
-			<!-- a href="" ng-show="canDelete(comment, work)">Delete</a -->
 			<a id="a-delete" href ng-click="deleteComment(work.id, comment.id)" ng-show="canDelete(comment)">Delete</a>
      	</p>
 	</div>

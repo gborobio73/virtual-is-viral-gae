@@ -14,7 +14,7 @@ public class NotificationRepo {
 	}
 	
 	public List<Notification> getAll()	{
-		return ofy().load().type(Notification.class).list();
+		return ofy().load().type(Notification.class).order("-created").list();
 	}
 
 	public void save(Notification noti) {
@@ -22,11 +22,11 @@ public class NotificationRepo {
 	}
 
 	public List<Notification> getUserNotifications(String toWhom) {
-		return ofy().load().type(Notification.class).filter("toWhom", toWhom).list();	
+		return ofy().load().type(Notification.class).filter("toWhom", toWhom).order("-created").list();	
 		}
 
 	public List<Notification> getUserUnreadNotifications(String toWhom) {
-		return ofy().load().type(Notification.class).filter("toWhom", toWhom).filter("read", false).list();
+		return ofy().load().type(Notification.class).filter("toWhom", toWhom).filter("read", false).order("-created").list();
 	}
 	
 }

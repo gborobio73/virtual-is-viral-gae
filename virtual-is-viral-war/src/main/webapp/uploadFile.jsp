@@ -3,13 +3,7 @@
 <%@ page import ="com.google.api.client.http.GenericUrl" %>
  
 <%
-  BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
-  GenericUrl url = new GenericUrl(request.getRequestURL().toString());
-  System.out.println(request.getRequestURL().toString());
-  
-  url.setRawPath("/upload");  
-  String uploadUrl = url.build();
-  System.out.println(uploadUrl);
+  BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();  
 %>
 
 <form action="<%= blobstoreService.createUploadUrl("/upload") %>" method="post" enctype="multipart/form-data">
