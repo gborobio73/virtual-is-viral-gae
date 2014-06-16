@@ -39,16 +39,16 @@
 			  </div>
 			  <div class="form-group">
 			    <label for="titleInput" class="col-sm-2 control-label">Title</label>
-			    <div class="col-sx-10">
+			    <div class="col-sm-10">
 			      <input type="text" class="form-control" id="titleInput" name="title" 
-			      placeholder="Enter title" style ="width: 200px;">	
+			      placeholder="Enter title">	
 			    </div>
 			  </div>
 			  <div class="form-group">
 			    <label for="descInput" class="col-sm-2 control-label">Description</label>
-			    <div class="col-sx-10">
+			    <div class="col-sm-10">
 			      <input type="text" class="form-control" id="descInput" name="description" 
-			      placeholder="Enter description" style ="width: 400px;">
+			      placeholder="Enter description">
 			    </div>
 			  </div>  
 			  <button type="submit" class="btn btn-primary" onclick="showProgress()">Upload Picture</button>
