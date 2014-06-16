@@ -91,5 +91,16 @@ angular.module('vivServices').factory('services', function($http, $http) {
                           return result;
                       });
       };
+     services.editWork = function(workId, title, description){
+     		var data ={
+     				workId :workId,
+     				title: title,
+     				description: description
+     		};
+             return $http.post('/rest/works/edit', data)
+                       .then(function(result) {                          
+                            return result;
+                        });
+        };
     return services; 
 });

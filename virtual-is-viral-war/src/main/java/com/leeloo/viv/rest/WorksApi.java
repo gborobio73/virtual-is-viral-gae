@@ -16,6 +16,7 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.api.users.User;
 import com.leeloo.viv.rest.jsonpojos.CommentToDelete;
+import com.leeloo.viv.rest.jsonpojos.EditedWork;
 import com.leeloo.viv.rest.jsonpojos.NewComment;
 import com.leeloo.viv.rest.jsonpojos.UiWork;
 import com.leeloo.viv.rest.jsonpojos.UiWorkMapper;
@@ -96,6 +97,21 @@ public class WorksApi {
     	
     	User user = userService.getCurrentUser();
     	new UseCases().deleteCommentFromWork(comment.workId, comment.commentId, user.getNickname());
+	    return Response.ok().build();
+    }
+    
+    @POST
+    @Path("/edit")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response editWork(EditedWork editedWork) {
+    	UserService userService = UserServiceFactory.getUserService();
+    	if (!userService.isUserLoggedIn()) {
+	        return Response.status(Response.Status.UNAUTHORIZED).build();
+	    } 
+    	
+    	User user = userService.getCurrentUser();
+    	new UseCases().editWork(editedWork.workId, editedWork.title, editedWork.description, user.getNickname());
 	    return Response.ok().build();
     }
 }

@@ -1,7 +1,9 @@
 angular.module('vivControllers').controller(
   'userDataController', function ($scope, $location, services) {
     $scope.user = {};
-
+    $scope.unreadNotificationsAmount =0;
+    $scope.unreadNotifications = {};
+    
     var getUnreadNotifications = function(){
       services.getUnreadNotifications().then(
         function(result) {

@@ -4,7 +4,8 @@
 	<%@ page import="com.google.appengine.api.blobstore.BlobstoreService" %>
 	<%@ page import ="com.google.api.client.http.GenericUrl" %>
 	 
-		<%BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService(); %>
+	<%BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService(); %>
+	
 	<!-- form action="<%= blobstoreService.createUploadUrl("/upload") %>" method="post" enctype="multipart/form-data">
 	  Title : <input type="text" name="title"/><br/>
 	  Description: <input type="text" name="description"/><br/>
@@ -53,6 +54,7 @@
 			  </div>  
 			  <button type="submit" class="btn btn-primary" onclick="showProgress()">Upload Picture</button>
 			  <img id="progressSpinner" src="../img/ajax-loader-big.gif"/>
+			  <button type="button" class="btn btn-default" onclick="navigateBorad()">Cancel</button>			  
 			</form>
 		  </div>
 		</div>
@@ -63,6 +65,9 @@
 		});
 		function showProgress(){
 			$("#progressSpinner").show();	
+		}
+		function navigateBorad(){
+			location.href = "./#/Borad";
 		}
 	</script>
 </html>

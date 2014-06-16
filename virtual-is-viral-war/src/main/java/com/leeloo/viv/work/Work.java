@@ -49,7 +49,11 @@ public class Work{
 			}	
 		}		
 	}
-
+	
+	public void edit(String title, String description) {
+		this.name = title;
+		this.description=description;
+	}
 	public void setDetails(String name, String description) {
 		this.name= name;
 		this.description=description;

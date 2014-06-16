@@ -1,7 +1,18 @@
 <div nav-menu></div>
 <img src='{{work.imagelUrl}}' class = "image-details"/>
-<div class = "image-footer">     
-	<p>{{work.name}}: {{work.description}} by {{work.user}}. Added on {{work.created}}</p>
+<div class = "image-footer"> 
+	<div ng-show="work.user == user.name">
+		<a id="editWork" href ng-click="showEditFields = true;" >Edit</a>
+		<div ng-show="showEditFields">
+			Title: <input type="text" ng-model = "work.name"/>
+			Description: <input type="text" ng-model = "work.description"/>
+			<button ng-click="saveWork()">Save</button>
+			<img ng-show="savingWork" src="../img/ajax-loader-small.gif"/>
+		</div>	
+	</div>
+	<div ng-hide ="showEditFields">	    
+		<p>{{work.name}}: {{work.description}} by {{work.user}}. Added on {{work.created}}</p>
+	</div>
    	<p>Comments:</p>
    	<div ng-repeat="comment in work.comments" >
  	    <p>{{comment.user}} commented: {{comment.comment}} on {{comment.date}}

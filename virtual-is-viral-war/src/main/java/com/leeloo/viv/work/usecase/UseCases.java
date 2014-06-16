@@ -55,7 +55,18 @@ public class UseCases{
 		notiRepo.save(notifications);
 	}
 	
+	public void editWork(String workId, String title, String description,String user) {
+		Work work = repo.get(workId);
+		if(work.user.equals(user)){
+			work.edit(title, description);
+			repo.save(work);
+		}
+		
+	}
+	
 	private boolean userIsNotCommentingHisOwnWork(String user, Work work) {
 		return !work.user.equals(user);
 	}
+
+	
 }

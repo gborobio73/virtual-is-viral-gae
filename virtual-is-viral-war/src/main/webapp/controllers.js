@@ -24,7 +24,12 @@ angular.module('vivControllers').controller(
   'detailsController', function ($scope, $stateParams, services) {
     $scope.addingComment = false;
     $scope.removingComment = false;
-    var getWork = function(workId) {
+    $scope.showEditFields = false;
+    $scope.savingWork = false;
+    $scope.isOwner= false;
+    $scope.work ={};
+    
+	var getWork = function(workId) {
       services.getWork(workId).then(
         function(result) {
           $scope.work = result;
@@ -35,13 +40,15 @@ angular.module('vivControllers').controller(
     var getConnectedUser = function(){
         services.getUser().then(
           function(result) {
-            $scope.user = result;
+            $scope.user = result;           
           });
       }
     
     var workId = $stateParams.workId;
     getWork(workId);
-    getConnectedUser();
+    getConnectedUser();    
+    
+    $scope.isOwner = $scope.work.user != null && ($scope.work.user == $scope.user);
     
     $scope.canDelete = function(comment){      
       var can_delete = (comment.user ==  $scope.user.name);
@@ -69,5 +76,17 @@ angular.module('vivControllers').controller(
 	          $scope.removingComment = false;
 	          });    	
       };
+      
+    $scope.saveWork= function(){
+      	$scope.savingWork = true;
+        console.log("saveWork ->" + $scope.work.id + " " + $scope.work.name + " " + $scope.work.description);        
+      	services.editWork($scope.work.id, $scope.work.name, $scope.work.description).then(
+  	        function(result) {
+  	        	$scope.savingWork = false;
+  	        	$scope.showEditFields = false;
+  	        	getWork($scope.work.id);  	          
+  	          });   	
+        };
+    
   });
 
