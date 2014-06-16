@@ -22,7 +22,8 @@ angular.module('vivControllers').controller(
 
 angular.module('vivControllers').controller(
   'detailsController', function ($scope, $stateParams, services) {
-    
+    $scope.addingComment = false;
+    $scope.removingComment = false;
     var getWork = function(workId) {
       services.getWork(workId).then(
         function(result) {
@@ -48,21 +49,25 @@ angular.module('vivControllers').controller(
     };
     
     $scope.addComment = function(){
+    	$scope.addingComment = true;
     	console.log("addComment to work id->" + JSON.stringify($scope.commentText));
     	services.addComment($scope.work.id, $scope.commentText).then(
 	        function(result) {
 	          console.log ('addComment() returns: ' + JSON.stringify(result));
 	          $scope.commentText = "";
 	          getWork($scope.work.id);
-	          }); 
+	          $scope.addingComment = false;
+	          });
     };
     
     $scope.deleteComment= function(workId, commentId){
+    	$scope.removingComment = true;
         console.log("deleteComment ->" + workId + " " + commentId);        
     	services.deleteComment(workId, commentId).then(
 	        function(result) {	          
 	          getWork($scope.work.id);
-	          }); 
+	          $scope.removingComment = false;
+	          });    	
       };
   });
 

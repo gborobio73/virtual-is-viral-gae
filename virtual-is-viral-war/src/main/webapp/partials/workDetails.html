@@ -6,10 +6,12 @@
    	<div ng-repeat="comment in work.comments" >
  	    <p>{{comment.user}} commented: {{comment.comment}} on {{comment.date}}
 			<a id="a-delete" href ng-click="deleteComment(work.id, comment.id)" ng-show="canDelete(comment)">Delete</a>
+			<img ng-show="removingComment" src="../img/ajax-loader-small.gif"/>
      	</p>
 	</div>
 	<div>
 		<input type="text" ng-model = "commentText"/>
 		<button ng-click="addComment()">Add</button>
+		<img ng-show="addingComment" src="../img/ajax-loader-small.gif"/>
 	</div>
 </div>

@@ -1,7 +1,8 @@
 body {
     margin: 0;
     background: #EEE;
-    font: 10px/13px 'Lucida Sans',sans-serif;
+    /*font: 10px/13px 'Lucida Sans',sans-serif;*/
+    font: 14px 'Lucida Sans',sans-serif;
     padding-top: 4%;
  }
  .wrap {

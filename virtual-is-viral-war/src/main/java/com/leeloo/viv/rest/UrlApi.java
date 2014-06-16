@@ -7,10 +7,12 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.NewCookie;
+
 import java.util.List;
 
 import com.google.gson.Gson;
-
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.appengine.api.users.User;
@@ -32,6 +34,18 @@ public class UrlApi {
 
     }
 
+    @GET
+    @Path("upload")
+    @Produces({ MediaType.APPLICATION_JSON })
+    public Response getUploadUrl() {
+
+    	BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+    	String uploadUrl = blobstoreService.createUploadUrl("/upload");
+    	
+        return Response.ok().entity(new Gson().toJson(uploadUrl)).build();
+
+    }
+    
     private class Url
     {
         String loginURL;

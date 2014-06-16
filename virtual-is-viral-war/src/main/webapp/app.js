@@ -19,9 +19,9 @@ vivApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'partials/Board.html',
       controller: 'boardController'
     })
-    .state('UploadWork', {
-      url: '/UploadWork',
-      templateUrl: 'partials/uploadWork.html',
+    .state('Upload', {
+      url: '/Upload',
+      templateUrl: 'partials/uploadFile.html',
       controller: 'uploadWorkController'
     })
     .state('Details', {

@@ -64,9 +64,9 @@ angular.module('vivServices').factory('services', function($http, $http) {
                         });
         };
     services.getUploadURL = function(){
-             return $http.get('/rest/upload/url/')
+             return $http.get('/rest/url/upload/')
                        .then(function(result) {
-                            console.log('/rest/upload/url/ -> ' + JSON.stringify(result.data));
+                            console.log('/rest/url/upload -> ' + JSON.stringify(result.data));
                             return result.data;
                         });
         };
